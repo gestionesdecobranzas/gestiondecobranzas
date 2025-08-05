@@ -1116,7 +1116,7 @@ export default function Home() {
 
                 {/* Testimonial Text */}
                 <p className="text-white/90 mb-6 italic leading-relaxed">
-                  "{testimonial.text}"
+                  &ldquo;{testimonial.text}&rdquo;
                 </p>
 
                 {/* Metric Highlight */}
