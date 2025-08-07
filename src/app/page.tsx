@@ -35,10 +35,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black">
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50' : 'bg-white/10 backdrop-blur-md border-b border-white/20'
+        isScrolled ? 'bg-slate-900/95 backdrop-blur-md border-b border-slate-700/50' : 'bg-black/20 backdrop-blur-md border-b border-white/10'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
@@ -68,7 +68,7 @@ export default function Home() {
               <a href="#ventajas" className="text-white/80 hover:text-white transition-colors font-medium">Ventajas</a>
               <a href="#casos-uso" className="text-white/80 hover:text-white transition-colors font-medium">Casos de Uso</a>
 
-              <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+              <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Contacto
               </Link>
             </motion.div>
@@ -116,7 +116,7 @@ export default function Home() {
 
                 <Link 
                   href="/contacto" 
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contacto
@@ -143,12 +143,12 @@ export default function Home() {
                 className="flex justify-center items-center gap-4 mb-6 text-sm text-white/60"
               >
                 <div className="flex items-center gap-1">
-                  <Shield className="h-4 w-4 text-green-400" />
+                  <Shield className="h-4 w-4 text-blue-400" />
                   <span>Certificado PCI DSS</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></div>
                 <div className="flex items-center gap-1">
-                  <Star className="h-4 w-4 text-yellow-400" />
+                  <Star className="h-4 w-4 text-white" />
                   <span>4.9/5 en reseñas</span>
                 </div>
                 <div className="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></div>
@@ -163,7 +163,7 @@ export default function Home() {
                 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
               >
                 Revoluciona tus
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                   Cobranzas
                 </span>
               </motion.h1>
@@ -172,7 +172,7 @@ export default function Home() {
                 variants={fadeInUp}
                 className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto"
               >
-                Gateway de recaudación inteligente. Hasta <strong className="text-yellow-400">10x más económico</strong> que tarjetas y QR.
+                Gateway de recaudación inteligente. Hasta <strong className="text-white">10x más económico</strong> que tarjetas y QR.
                 Transferencias automáticas que transforman tu negocio.
               </motion.p>
 
@@ -181,13 +181,13 @@ export default function Home() {
                 variants={fadeInUp}
                 className="flex flex-wrap justify-center gap-3 mb-8"
               >
-                <span className="bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-medium border border-green-500/30">
+                <span className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30">
                   ✅ Sin contracargos
                 </span>
-                <span className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30">
+                <span className="bg-slate-500/20 text-slate-300 px-4 py-2 rounded-full text-sm font-medium border border-slate-500/30">
                   ⚡ Acreditación inmediata
                 </span>
-                <span className="bg-purple-500/20 text-purple-300 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30">
+                <span className="bg-gray-500/20 text-gray-300 px-4 py-2 rounded-full text-sm font-medium border border-gray-500/30">
                   🔒 100% seguro
                 </span>
               </motion.div>
@@ -197,7 +197,7 @@ export default function Home() {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
               >
                 <Link href="/contacto">
-                  <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center gap-2 shadow-2xl hover:shadow-blue-500/25 hover:scale-105">
+                  <button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 flex items-center gap-2 shadow-2xl hover:shadow-blue-500/25 hover:scale-105">
                     Comenzar Ahora
                     <ArrowRight className="w-5 h-5" />
                   </button>
@@ -228,7 +228,7 @@ export default function Home() {
         </section>
 
       {/* Statistics Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             variants={staggerContainer}
@@ -260,25 +260,25 @@ export default function Home() {
           >
             <motion.div 
               variants={fadeInUp} 
-              className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 backdrop-blur-sm rounded-2xl p-6 border border-yellow-500/30 hover:border-yellow-400/50 transition-all duration-300 group"
+              className="bg-gradient-to-br from-blue-500/20 to-blue-700/20 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group"
             >
-              <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2 group-hover:scale-110 transition-transform duration-300">10x</div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">10x</div>
               <div className="text-white/80 font-medium">Más Económico</div>
               <div className="text-white/60 text-sm mt-1">vs. tarjetas de crédito</div>
             </motion.div>
             
             <motion.div 
               variants={fadeInUp} 
-              className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-2xl p-6 border border-green-500/30 hover:border-green-400/50 transition-all duration-300 group"
+              className="bg-gradient-to-br from-slate-500/20 to-slate-700/20 backdrop-blur-sm rounded-2xl p-6 border border-slate-500/30 hover:border-slate-400/50 transition-all duration-300 group"
             >
-              <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
+              <div className="text-4xl md:text-5xl font-bold text-slate-300 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
               <div className="text-white/80 font-medium">Uptime</div>
               <div className="text-white/60 text-sm mt-1">Disponibilidad garantizada</div>
             </motion.div>
             
             <motion.div 
               variants={fadeInUp} 
-              className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group"
+              className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-2xl p-6 border border-blue-600/30 hover:border-blue-500/50 transition-all duration-300 group"
             >
               <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
               <div className="text-white/80 font-medium">Soporte</div>
@@ -287,9 +287,9 @@ export default function Home() {
             
             <motion.div 
               variants={fadeInUp} 
-              className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-6 border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 group"
+              className="bg-gradient-to-br from-gray-500/20 to-gray-700/20 backdrop-blur-sm rounded-2xl p-6 border border-gray-500/30 hover:border-gray-400/50 transition-all duration-300 group"
             >
-              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">1000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-gray-300 mb-2 group-hover:scale-110 transition-transform duration-300">1000+</div>
               <div className="text-white/80 font-medium">Empresas</div>
               <div className="text-white/60 text-sm mt-1">Confían en nosotros</div>
             </motion.div>
@@ -301,12 +301,12 @@ export default function Home() {
             className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
           >
             <div className="flex flex-col items-center">
-              <Shield className="h-12 w-12 text-green-400 mb-4" />
+              <Shield className="h-12 w-12 text-blue-400 mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Máxima Seguridad</h3>
               <p className="text-white/70 text-sm">Certificación PCI DSS Level 1 y encriptación de extremo a extremo</p>
             </div>
             <div className="flex flex-col items-center">
-              <Zap className="h-12 w-12 text-yellow-400 mb-4" />
+              <Zap className="h-12 w-12 text-white mb-4" />
               <h3 className="text-lg font-semibold text-white mb-2">Procesamiento Instantáneo</h3>
               <p className="text-white/70 text-sm">Transferencias procesadas en tiempo real, 24/7</p>
             </div>
@@ -342,7 +342,7 @@ export default function Home() {
               className="text-4xl md:text-6xl font-bold text-white mb-6"
             >
               Transferencias
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                 Inteligentes
               </span>
             </motion.h2>
@@ -360,7 +360,7 @@ export default function Home() {
               className="flex flex-wrap justify-center gap-4 mb-12"
             >
               <Link href="/servicios">
-                <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center gap-2">
+                <button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-blue-900 transition-all duration-300 flex items-center gap-2">
                   Ver todos los servicios
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -382,10 +382,10 @@ export default function Home() {
           >
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-300 group hover:scale-105"
+              className="bg-gradient-to-br from-slate-600/10 to-slate-800/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-500/20 hover:border-slate-400/40 transition-all duration-300 group hover:scale-105"
             >
-              <div className="bg-yellow-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8 text-yellow-400" />
+              <div className="bg-slate-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Automatización Total</h3>
               <p className="text-white/70 mb-6">
@@ -394,21 +394,21 @@ export default function Home() {
               </p>
               <ul className="space-y-3 text-white/60">
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Generación automática de CBU/CVU</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Instrucciones de pago personalizadas</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Seguimiento en tiempo real</span>
                 </li>
               </ul>
               <div className="mt-6 pt-6 border-t border-white/10">
                 <Link href="/servicios#automatizacion">
-                  <button className="text-yellow-400 hover:text-yellow-300 font-semibold flex items-center gap-2 group">
+                  <button className="text-white hover:text-blue-300 font-semibold flex items-center gap-2 group">
                     Conocer más
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -418,10 +418,10 @@ export default function Home() {
             
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm rounded-2xl p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 group hover:scale-105"
+              className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group hover:scale-105"
             >
-              <div className="bg-green-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-8 h-8 text-green-400" />
+              <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Pagos Seguros</h3>
               <p className="text-white/70 mb-6">
@@ -430,21 +430,21 @@ export default function Home() {
               </p>
               <ul className="space-y-3 text-white/60">
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Sin riesgo de contracargos</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Certificación bancaria PCI DSS</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Encriptación de extremo a extremo</span>
                 </li>
               </ul>
               <div className="mt-6 pt-6 border-t border-white/10">
                 <Link href="/servicios#seguridad">
-                  <button className="text-green-400 hover:text-green-300 font-semibold flex items-center gap-2 group">
+                  <button className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-2 group">
                     Conocer más
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -454,10 +454,10 @@ export default function Home() {
             
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group hover:scale-105"
+              className="bg-gradient-to-br from-slate-700/10 to-black/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/20 hover:border-slate-500/40 transition-all duration-300 group hover:scale-105"
             >
-              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-8 h-8 text-blue-400" />
+              <div className="bg-slate-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Integración Completa</h3>
               <p className="text-white/70 mb-6">
@@ -466,21 +466,21 @@ export default function Home() {
               </p>
               <ul className="space-y-3 text-white/60">
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>API REST completa</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Webhooks en tiempo real</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>SDKs para múltiples lenguajes</span>
                 </li>
               </ul>
               <div className="mt-6 pt-6 border-t border-white/10">
                 <Link href="/servicios#integracion">
-                  <button className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-2 group">
+                  <button className="text-white hover:text-blue-300 font-semibold flex items-center gap-2 group">
                     Conocer más
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -503,7 +503,7 @@ export default function Home() {
           >
             <motion.div 
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-medium border border-green-500/30 mb-6"
+              className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30 mb-6"
             >
               <CheckCircle className="h-4 w-4" />
               <span>Ventajas comprobadas</span>
@@ -514,7 +514,7 @@ export default function Home() {
               className="text-4xl md:text-5xl font-bold text-white mb-6"
             >
               ¿Por qué elegir nuestro
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                 Gateway?
               </span>
             </motion.h2>
@@ -536,17 +536,17 @@ export default function Home() {
           >
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm rounded-2xl p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group"
             >
-              <div className="bg-green-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <TrendingUp className="w-8 h-8 text-green-400" />
+              <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">10x Más Económico</h3>
               <p className="text-white/70 mb-4">
                 Reduce tus costos de procesamiento hasta un 90% comparado con tarjetas de crédito y otros métodos.
               </p>
-              <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/20">
-                <div className="text-sm text-green-300 font-semibold mb-2">Comparación de costos:</div>
+              <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/20">
+                <div className="text-sm text-blue-300 font-semibold mb-2">Comparación de costos:</div>
                 <div className="space-y-1 text-sm text-white/60">
                   <div className="flex justify-between">
                     <span>Tarjetas de crédito:</span>
@@ -554,7 +554,7 @@ export default function Home() {
                   </div>
                   <div className="flex justify-between">
                     <span>Nuestro gateway:</span>
-                    <span className="text-green-400">0.3-0.8%</span>
+                    <span className="text-blue-400">0.3-0.8%</span>
                   </div>
                 </div>
               </div>
@@ -562,10 +562,10 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-slate-600/10 to-slate-800/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-500/20 hover:border-slate-400/40 transition-all duration-300 group"
             >
-              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8 text-blue-400" />
+              <div className="bg-slate-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Confirmación Instantánea</h3>
               <p className="text-white/70 mb-4">
@@ -589,10 +589,10 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-black/10 to-slate-900/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 group"
             >
-              <div className="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-8 h-8 text-purple-400" />
+              <div className="bg-black/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Sin Contracargos</h3>
               <p className="text-white/70 mb-4">
@@ -600,15 +600,15 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>0% riesgo de contracargos</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Pagos irreversibles</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Protección total</span>
                 </div>
               </div>
@@ -616,10 +616,10 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-slate-700/10 to-black/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/20 hover:border-slate-500/40 transition-all duration-300 group"
             >
-              <div className="bg-orange-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Clock className="w-8 h-8 text-orange-400" />
+              <div className="bg-slate-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Clock className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Soporte 24/7</h3>
               <p className="text-white/70 mb-4">
@@ -627,15 +627,15 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Chat en vivo 24/7</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Soporte técnico especializado</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Tiempo de respuesta menor a 5 min</span>
                 </div>
               </div>
@@ -643,10 +643,10 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-blue-700/10 to-blue-900/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/20 hover:border-blue-500/40 transition-all duration-300 group"
             >
-              <div className="bg-cyan-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-8 h-8 text-cyan-400" />
+              <div className="bg-blue-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Integración Rápida</h3>
               <p className="text-white/70 mb-4">
@@ -654,15 +654,15 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Setup en menos de 24 horas</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>API REST simple</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Documentación completa</span>
                 </div>
               </div>
@@ -670,10 +670,10 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-300 group"
+              className="bg-gradient-to-br from-slate-600/10 to-slate-900/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/20 hover:border-slate-500/40 transition-all duration-300 group"
             >
-              <div className="bg-yellow-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Star className="w-8 h-8 text-yellow-400" />
+              <div className="bg-slate-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Star className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Experiencia Premium</h3>
               <p className="text-white/70 mb-4">
@@ -681,15 +681,15 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>UX optimizada</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Dashboard intuitivo</span>
                 </div>
                 <div className="flex items-center gap-3 text-white/60">
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Proceso simplificado</span>
                 </div>
               </div>
@@ -743,7 +743,7 @@ export default function Home() {
               className="text-4xl md:text-5xl font-bold text-white mb-6"
             >
               Soluciones para cada
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                 tipo de negocio
               </span>
             </motion.h2>
@@ -765,12 +765,12 @@ export default function Home() {
           >
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/20 hover:border-blue-500/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
-                <div className="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <CreditCard className="w-8 h-8 text-purple-400" />
+                <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <CreditCard className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">E-commerce</h3>
                 <p className="text-white/70 mb-6">
@@ -778,24 +778,24 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Checkout en 1 click</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Pagos recurrentes automáticos</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Integración con inventario</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Analytics de conversión</span>
                   </div>
                 </div>
-                <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/20">
-                  <div className="text-sm text-purple-300 font-semibold mb-1">Mejora promedio:</div>
+                <div className="bg-blue-600/10 rounded-lg p-4 border border-blue-600/20">
+                  <div className="text-sm text-blue-300 font-semibold mb-1">Mejora promedio:</div>
                   <div className="text-2xl font-bold text-white">+35% conversiones</div>
                 </div>
               </div>
@@ -803,12 +803,12 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm rounded-2xl p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-slate-700/10 to-black/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-600/20 hover:border-slate-500/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-600/20 to-slate-800/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
-                <div className="bg-green-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Users className="w-8 h-8 text-green-400" />
+                <div className="bg-slate-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Servicios Profesionales</h3>
                 <p className="text-white/70 mb-6">
@@ -816,24 +816,24 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Facturación automática</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Recordatorios inteligentes</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Reportes detallados</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Gestión de clientes</span>
                   </div>
                 </div>
-                <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/20">
-                  <div className="text-sm text-green-300 font-semibold mb-1">Reducción promedio:</div>
+                <div className="bg-slate-700/10 rounded-lg p-4 border border-slate-700/20">
+                  <div className="text-sm text-white font-semibold mb-1">Reducción promedio:</div>
                   <div className="text-2xl font-bold text-white">-60% tiempo admin</div>
                 </div>
               </div>
@@ -841,9 +841,9 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-blue-700/10 to-blue-900/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/20 hover:border-blue-500/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
                 <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Zap className="w-8 h-8 text-blue-400" />
@@ -879,12 +879,12 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-slate-800/10 to-black/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-700/20 to-black/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
-                <div className="bg-orange-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-8 h-8 text-orange-400" />
+                <div className="bg-slate-800/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Marketplace</h3>
                 <p className="text-white/70 mb-6">
@@ -892,24 +892,24 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Split payments automático</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Gestión de comisiones</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>KYC automatizado</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Reportes por vendedor</span>
                   </div>
                 </div>
-                <div className="bg-orange-500/10 rounded-lg p-4 border border-orange-500/20">
-                  <div className="text-sm text-orange-300 font-semibold mb-1">Reducción promedio:</div>
+                <div className="bg-slate-800/10 rounded-lg p-4 border border-slate-800/20">
+                  <div className="text-sm text-white font-semibold mb-1">Reducción promedio:</div>
                   <div className="text-2xl font-bold text-white">-80% tiempo setup</div>
                 </div>
               </div>
@@ -917,12 +917,12 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-blue-600/10 to-blue-800/10 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/20 hover:border-blue-500/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
-                <div className="bg-cyan-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-8 h-8 text-cyan-400" />
+                <div className="bg-blue-600/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Shield className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Fintech</h3>
                 <p className="text-white/70 mb-6">
@@ -930,24 +930,24 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>APIs de alto rendimiento</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Compliance automático</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Monitoreo en tiempo real</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Escalabilidad ilimitada</span>
                   </div>
                 </div>
-                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/20">
-                  <div className="text-sm text-cyan-300 font-semibold mb-1">Disponibilidad:</div>
+                <div className="bg-blue-600/10 rounded-lg p-4 border border-blue-600/20">
+                  <div className="text-sm text-blue-300 font-semibold mb-1">Disponibilidad:</div>
                   <div className="text-2xl font-bold text-white">99.99% uptime</div>
                 </div>
               </div>
@@ -955,12 +955,12 @@ export default function Home() {
 
             <motion.div 
               variants={fadeInUp}
-              className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 backdrop-blur-sm rounded-2xl p-8 border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-300 group relative overflow-hidden"
+              className="bg-gradient-to-br from-slate-700/10 to-black/10 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/20 hover:border-slate-600/40 transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-slate-700/20 to-black/20 rounded-full -translate-y-16 translate-x-16"></div>
               <div className="relative z-10">
-                <div className="bg-yellow-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Star className="w-8 h-8 text-yellow-400" />
+                <div className="bg-slate-700/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Star className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Empresas</h3>
                 <p className="text-white/70 mb-6">
@@ -968,24 +968,24 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Integración ERP/CRM</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Workflows personalizados</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>Soporte dedicado</span>
                   </div>
                   <div className="flex items-center gap-3 text-white/60">
-                    <CheckCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                     <span>SLA garantizado</span>
                   </div>
                 </div>
-                <div className="bg-yellow-500/10 rounded-lg p-4 border border-yellow-500/20">
-                  <div className="text-sm text-yellow-300 font-semibold mb-1">Procesamiento:</div>
+                <div className="bg-slate-700/10 rounded-lg p-4 border border-slate-700/20">
+                  <div className="text-sm text-white font-semibold mb-1">Procesamiento:</div>
                   <div className="text-2xl font-bold text-white">$1M+ diarios</div>
                 </div>
               </div>
@@ -997,21 +997,21 @@ export default function Home() {
             variants={fadeInUp}
             className="mt-20 text-center"
           >
-            <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-2xl p-8 border border-green-500/30">
+            <div className="bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30">
               <h3 className="text-2xl font-bold text-white mb-6">Casos de éxito reales</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">+150%</div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2">+150%</div>
                   <div className="text-white/70">Aumento en conversiones</div>
                   <div className="text-sm text-white/50 mt-1">E-commerce de moda</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">-70%</div>
+                  <div className="text-3xl font-bold text-white mb-2">-70%</div>
                   <div className="text-white/70">Reducción en costos</div>
                   <div className="text-sm text-white/50 mt-1">Marketplace B2B</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2">99.8%</div>
+                  <div className="text-3xl font-bold text-blue-300 mb-2">99.8%</div>
                   <div className="text-white/70">Tasa de éxito en pagos</div>
                   <div className="text-sm text-white/50 mt-1">Fintech de préstamos</div>
                 </div>
@@ -1030,7 +1030,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-green-500/30 mb-6">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-full px-6 py-2 border border-blue-600/30 mb-6">
               <Star className="w-4 h-4 text-yellow-400 mr-2" />
               <span className="text-white/90 text-sm font-medium">Testimonios verificados</span>
             </div>
@@ -1060,11 +1060,11 @@ export default function Home() {
             </div>
             <div className="text-white/60">•</div>
             <div className="text-white/80">
-              <span className="font-semibold text-green-400">98%</span> de satisfacción del cliente
+              <span className="font-semibold text-blue-400">98%</span> de satisfacción del cliente
             </div>
             <div className="text-white/60">•</div>
             <div className="text-white/80">
-              <span className="font-semibold text-blue-400">1000+</span> empresas activas
+              <span className="font-semibold text-white">1000+</span> empresas activas
             </div>
           </motion.div>
 
@@ -1164,7 +1164,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm rounded-full px-6 py-2 border border-purple-500/30 mb-6">
+            <div className="inline-flex items-center bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-full px-6 py-2 border border-blue-600/30 mb-6">
               <span className="text-white/90 text-sm font-medium">Resolvemos tus dudas</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -1231,7 +1231,7 @@ export default function Home() {
                     <div className="p-6">
                       <div className="flex items-start space-x-4">
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center border border-blue-500/30">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-lg flex items-center justify-center border border-blue-600/30">
                             <IconComponent className="w-6 h-6 text-blue-400" />
                           </div>
                         </div>
@@ -1263,7 +1263,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
+            <div className="bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-600/30">
               <h3 className="text-2xl font-bold text-white mb-4">
                 ¿No encontraste lo que buscabas?
               </h3>
@@ -1272,7 +1272,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contacto">
-                  <button className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
+                  <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-blue-800 transition-all duration-300">
                     Contactar Especialista
                   </button>
                 </Link>
@@ -1284,7 +1284,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-sm">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600/20 to-blue-800/20 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -1299,7 +1299,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center">
               <Link href="/contacto">
-                <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-12 py-4 rounded-full font-semibold text-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-2xl">
+                <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-12 py-4 rounded-full font-semibold text-xl hover:from-blue-600 hover:to-blue-800 transition-all duration-300 shadow-2xl">
                   Solicitar Consulta Gratuita
                 </button>
               </Link>
