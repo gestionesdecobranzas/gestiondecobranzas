@@ -61,10 +61,10 @@ Sitio web corporativo moderno para **Gestión de Cobranzas SAS**, una empresa ar
    ```env
    SMTP_HOST=smtp.gmail.com
    SMTP_PORT=587
-   SMTP_USER=tu-email@gmail.com
+   SMTP_USER=tu-email@gestiondecobranzas.com
    SMTP_PASS=tu-password-de-aplicacion
-   SMTP_FROM=noreply@gestioncobranzas.com
-   SALES_EMAIL=ventas@gestioncobranzas.com
+   SMTP_FROM=noreply@gestiondecobranzas.com
+   SALES_EMAIL=adm@gestiondecobranzas.com
    ```
 
 4. **Ejecutar en modo desarrollo**
@@ -109,17 +109,27 @@ gestiondecobranzas/
 │   │   │       └── route.ts          # API para formulario de contacto
 │   │   ├── contacto/
 │   │   │   └── page.tsx              # Página de contacto
+│   │   ├── servicios/
+│   │   │   └── page.tsx              # Página de servicios
+│   │   ├── terminos/
+│   │   │   └── page.tsx              # Términos de servicio
+│   │   ├── privacidad/
+│   │   │   └── page.tsx              # Política de privacidad
 │   │   ├── globals.css               # Estilos globales
-│   │   ├── layout.tsx                # Layout principal
-│   │   └── page.tsx                  # Página de inicio
-│   └── components/
-│       └── ContactForm.tsx           # Componente del formulario
+│   │   ├── layout.tsx                # Layout principal con metadatos
+│   │   └── page.tsx                  # Página de inicio con logo SVG
+│   ├── components/
+│   │   ├── ContactForm.tsx           # Componente del formulario
+│   │   └── Footer.tsx                # Footer unificado para toda la app
+│   └── images/
+│       └── Logo Gestion de cobranzas SAS -blanco.svg  # Logo oficial
 ├── public/                           # Archivos estáticos
 ├── .env.example                      # Ejemplo de variables de entorno
 ├── .gitignore                        # Archivos ignorados por Git
 ├── package.json                      # Dependencias y scripts
 ├── tailwind.config.ts               # Configuración de Tailwind
 ├── tsconfig.json                     # Configuración de TypeScript
+├── CHANGELOG.md                      # Registro de cambios detallado
 └── README.md                         # Este archivo
 ```
 
@@ -211,15 +221,32 @@ Para implementar analytics, considera:
 
 ## 📝 Changelog
 
-### Versión 1.0.0 (Enero 2025)
+### Versión 1.2.0 (Diciembre 2024) - ÚLTIMA ACTUALIZACIÓN
+- ✅ **Footer unificado** implementado en toda la aplicación con componente reutilizable
+- ✅ **Logo corporativo SVG** integrado en el header principal
+- ✅ **Eliminación del botón "Llamar Ahora"** de la página principal
+- ✅ **Migración de dominio** completa de `gestioncobranzas.com` a `gestiondecobranzas.com`
+- ✅ **Unificación de emails** a `adm@gestiondecobranzas.com` en toda la aplicación
+- ✅ **Configuración SMTP actualizada** para Google Workspace con TLS
+- ✅ **Metadatos y SEO** actualizados con nuevo dominio y estructura
+- ✅ **Responsive design mejorado** para footer en todos los dispositivos
+- ✅ **Documentación completa** con CHANGELOG.md detallado
+
+### Versión 1.1.0 (Enero 2025)
 - ✅ **Eliminación completa de referencias telefónicas** del sitio web
-- ✅ **Footer unificado** añadido a todas las subpáginas (contacto, servicios, privacidad, términos)
+- ✅ **Footer básico** añadido a todas las subpáginas (contacto, servicios, privacidad, términos)
 - ✅ **Navegación mejorada** en todas las páginas
 - ✅ **Formulario de contacto optimizado** sin campo de teléfono
 - ✅ **Copyright dinámico** que se actualiza automáticamente
 - ✅ **Build de producción optimizado** sin errores de compilación
 - ✅ **Estructura de páginas completa** con todas las secciones legales
 - ✅ **Responsive design** mejorado para todos los dispositivos
+
+### Versión 1.0.0 (Inicial)
+- ✅ **Sitio web corporativo** con Next.js 15 y React 19
+- ✅ **Formulario de contacto funcional** con validaciones
+- ✅ **Páginas institucionales** básicas
+- ✅ **Diseño responsive** inicial
 
 ## 🤝 Contribución
 
@@ -237,8 +264,9 @@ Este proyecto está bajo la licencia MIT. Ver `LICENSE` para más detalles.
 ## 📞 Soporte
 
 Para soporte técnico:
-- **Email**: soporte@gestioncobranzas.com
-- **Documentación**: [Enlace a docs]
+- **Email**: adm@gestiondecobranzas.com
+- **Documentación**: Ver CHANGELOG.md para cambios detallados
+- **Sitio web**: https://gestiondecobranzas.com
 
 ---
 

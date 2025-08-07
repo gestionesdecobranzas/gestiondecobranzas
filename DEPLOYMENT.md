@@ -38,10 +38,12 @@ npm run lint
 ```
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=tu-email@gmail.com
+SMTP_USER=adm@gestiondecobranzas.com
 SMTP_PASS=tu-password-de-aplicacion
-SMTP_FROM=noreply@gestioncobranzas.com
-SALES_EMAIL=ventas@gestioncobranzas.com
+SMTP_FROM=noreply@gestiondecobranzas.com
+SALES_EMAIL=adm@gestiondecobranzas.com
+SMTP_SECURE=false
+SMTP_TLS=true
 NEXT_PUBLIC_SITE_URL=https://tu-dominio.com
 ```
 
@@ -199,12 +201,25 @@ npm install @next/bundle-analyzer
 
 ## 📋 Checklist de Despliegue
 
-- [ ] Build exitoso localmente
-- [ ] Linting sin errores
-- [ ] Variables de entorno configuradas
-- [ ] Dominio configurado
-- [ ] SSL habilitado
-- [ ] Email funcionando
+### Pre-despliegue
+- [x] Todas las pruebas pasan
+- [x] Build de producción exitoso
+- [x] Variables de entorno configuradas con dominio actualizado
+- [x] Dominio gestiondecobranzas.com configurado
+- [x] SSL/TLS habilitado
+- [x] Footer unificado implementado en todas las páginas
+- [x] Logo SVG integrado en header
+- [x] Emails migrados a @gestiondecobranzas.com
+
+### Post-despliegue
+- [x] Sitio accesible en https://gestiondecobranzas.com
+- [x] Formulario de contacto funcional
+- [x] Emails llegando a adm@gestiondecobranzas.com
+- [x] Responsive design verificado en todos los dispositivos
+- [x] Performance optimizada
+- [x] Footer consistente en todas las páginas
+- [x] Navegación sin botón "Llamar Ahora"
+- [x] Metadatos y SEO actualizados
 - [ ] Analytics configurado
 - [ ] Monitoreo de errores activo
 - [ ] Backup de base de datos (si aplica)

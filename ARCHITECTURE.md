@@ -50,12 +50,32 @@ gestiondecobranzas/
 
 ### Email y Comunicación
 - **Nodemailer**: Envío de emails desde el servidor
-- **SMTP**: Protocolo para envío de emails
+- **SMTP**: Configuración para Google Workspace con TLS
+- **Dominio unificado**: Todos los emails migrados a @gestiondecobranzas.com
+- **Email principal**: adm@gestiondecobranzas.com para contacto y administración
+- **Templates**: HTML responsivo para emails
+- **Validación**: Doble validación (cliente y servidor)
+- **Fallback**: Logs en desarrollo, emails reales en producción
+- **Seguridad**: Configuración TLS habilitada para mayor seguridad
 
 ### Iconografía y UI
 - **Lucide React**: Iconos modernos y consistentes
 
 ## 🎨 Decisiones de Diseño
+
+### UI/UX
+- **Diseño moderno**: Gradientes, glassmorphism, animaciones suaves
+- **Responsive first**: Mobile-first approach con breakpoints optimizados
+- **Accesibilidad**: Contraste adecuado, navegación por teclado
+- **Performance**: Lazy loading, optimización de imágenes
+- **Branding consistente**: Logo SVG oficial integrado en header
+- **Footer unificado**: Componente reutilizable para consistencia visual
+
+### Arquitectura de Componentes
+- **Componentes reutilizables**: Footer centralizado para toda la app
+- **Separación de responsabilidades**: Lógica de negocio separada de UI
+- **Tipado estricto**: TypeScript en todos los componentes
+- **Props interface**: Interfaces bien definidas para cada componente
 
 ### Sistema de Colores
 ```css
@@ -109,6 +129,25 @@ graph TD
 - **Functional Components**: Uso exclusivo de componentes funcionales
 - **Hooks**: useState, useEffect, custom hooks cuando sea necesario
 - **Props Interface**: Tipado estricto con TypeScript
+
+#### ContactForm
+- **Ubicación**: `src/components/ContactForm.tsx`
+- **Propósito**: Formulario de contacto con validaciones
+- **Dependencias**: React Hook Form, Zod, Framer Motion
+- **Estado**: Maneja loading, success, error
+- **Validaciones**: Nombre, email, empresa, mensaje, volumen
+
+#### Footer (Nuevo)
+- **Ubicación**: `src/components/Footer.tsx`
+- **Propósito**: Footer unificado para toda la aplicación
+- **Características**:
+  - Diseño moderno con gradientes y efectos de vidrio
+  - Información de contacto centralizada
+  - Enlaces a redes sociales (LinkedIn, Twitter, Instagram)
+  - Secciones organizadas: Servicios, Soporte, Legal
+  - Responsive design optimizado
+  - Efectos hover y transiciones suaves
+- **Reutilización**: Implementado en todas las páginas principales
 
 ### Estado
 - **Local State**: React Hook Form para formularios

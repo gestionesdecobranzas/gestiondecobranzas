@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "procesador pagos",
     "api pagos argentina"
   ],
-  authors: [{ name: "Gestión de Cobranzas SAS", url: "https://gestioncobranzas.com" }],
+  authors: [{ name: "Gestión de Cobranzas SAS", url: "https://gestiondecobranzas.com" }],
   creator: "Gestión de Cobranzas SAS",
   publisher: "Gestión de Cobranzas SAS",
   robots: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://gestioncobranzas.com",
+    url: "https://gestiondecobranzas.com",
     siteName: "Gestión de Cobranzas SAS",
     title: "Gateway de Pagos Inteligente - Gestión de Cobranzas SAS",
     description: "Revoluciona tu sistema de pagos con transferencias automáticas hasta 10x más económicas. Sin contracargos, acreditación inmediata y soporte 24/7.",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     creator: "@GestionCobranzas",
   },
   alternates: {
-    canonical: "https://gestioncobranzas.com",
+    canonical: "https://gestiondecobranzas.com",
   },
   category: "fintech",
 };
@@ -81,11 +81,11 @@ const structuredData = {
   "@type": "FinancialService",
   "name": "Gestión de Cobranzas SAS",
   "description": "Plataforma líder en Argentina para gestión de cobranzas y gateway de pagos con transferencias automáticas.",
-  "url": "https://gestioncobranzas.com",
-  "logo": "https://gestioncobranzas.com/logo.png",
-  "image": "https://gestioncobranzas.com/og-image.jpg",
+  "url": "https://gestiondecobranzas.com",
+  "logo": "https://gestiondecobranzas.com/logo.png",
+  "image": "https://gestiondecobranzas.com/og-image.jpg",
 
-  "email": "ventas@gestioncobranzas.com",
+  "email": "adm@gestiondecobranzas.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Av. Corrientes 1234, Piso 10",

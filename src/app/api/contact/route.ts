@@ -17,23 +17,24 @@ export async function POST(request: NextRequest) {
     // Validar los datos del formulario
     const validatedData = contactSchema.parse(body);
     
-    // Configurar el transportador de email
-    // Para desarrollo, usaremos un servicio de email de prueba
-    // En producción, deberías usar un servicio real como SendGrid, AWS SES, etc.
-    const transporter = nodemailer.createTransport({
+    // Configurar el transportador de email para Google Workspace
+    const transporter = nodemailer.createTransporter({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
+      secure: false, // true para puerto 465, false para otros puertos
       auth: {
-        user: process.env.SMTP_USER || 'demo@gestioncobranzas.com',
+        user: process.env.SMTP_USER || 'adm@gestiondecobranzas.com',
         pass: process.env.SMTP_PASS || 'demo-password',
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Email para el equipo de ventas
     const salesEmail = {
-      from: process.env.SMTP_FROM || 'noreply@gestioncobranzas.com',
-      to: process.env.SALES_EMAIL || 'ventas@gestioncobranzas.com',
+      from: process.env.SMTP_FROM || 'noreply@gestiondecobranzas.com',
+      to: process.env.SALES_EMAIL || 'adm@gestiondecobranzas.com',
       subject: `Nueva solicitud de demo - ${validatedData.company}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -81,7 +82,7 @@ export async function POST(request: NextRequest) {
 
     // Email de confirmación para el cliente
     const confirmationEmail = {
-      from: process.env.SMTP_FROM || 'noreply@gestioncobranzas.com',
+      from: process.env.SMTP_FROM || 'noreply@gestiondecobranzas.com',
       to: validatedData.email,
       subject: 'Confirmación de solicitud - Gestión de Cobranzas SAS',
       html: `
@@ -113,14 +114,14 @@ export async function POST(request: NextRequest) {
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://gestioncobranzas.com" style="background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">Visitar Sitio Web</a>
+              <a href="https://gestiondecobranzas.com" style="background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">Visitar Sitio Web</a>
             </div>
           </div>
           
           <div style="background: #1e293b; padding: 20px; text-align: center;">
             <p style="color: #94a3b8; margin: 0; font-size: 14px;">
               © 2025 Gestión de Cobranzas SAS<br>
-              Buenos Aires, Argentina | +54 11 1234-5678
+              Buenos Aires, Argentina | adm@gestiondecobranzas.com
             </p>
           </div>
         </div>

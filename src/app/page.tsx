@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, CreditCard, Zap, Shield, TrendingUp, Users, Clock, Menu, X, Star, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+import LogoSVG from '@/images/Logo Gestion de cobranzas SAS -blanco.svg';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -42,10 +45,16 @@ export default function Home() {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold text-white"
+              className="flex items-center"
             >
-              <Link href="/" className="hover:text-blue-400 transition-colors">
-                Gestión de Cobranzas <span className="text-blue-400">SAS</span>
+              <Link href="/" className="hover:opacity-80 transition-opacity">
+                <Image 
+                  src={LogoSVG}
+                  alt="Gestión de Cobranzas SAS"
+                  width={180}
+                  height={55}
+                  className="h-12 w-auto"
+                />
               </Link>
             </motion.div>
             
@@ -695,7 +704,7 @@ export default function Home() {
             <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
               <h3 className="text-2xl font-bold text-white mb-4">¿Listo para transformar tus cobranzas?</h3>
               <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-                Únete a más de 1000 empresas que ya optimizaron sus procesos de cobro
+                Unite a más de 1000 empresas que ya optimizaron sus procesos de cobro
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contacto">
@@ -1286,17 +1295,12 @@ export default function Home() {
               ¿Listo para <span className="text-blue-400">revolucionar</span> tus cobranzas?
             </h2>
             <p className="text-xl text-white/80 mb-8">
-              Únete a más de 1000 empresas que ya confían en nosotros
+              Unite a más de 1000 empresas que ya confían en nosotros
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center">
               <Link href="/contacto">
                 <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-12 py-4 rounded-full font-semibold text-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-2xl">
                   Solicitar Consulta Gratuita
-                </button>
-              </Link>
-              <Link href="tel:+541112345678">
-                <button className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300">
-                  Llamar Ahora
                 </button>
               </Link>
             </div>
@@ -1304,127 +1308,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black/50 backdrop-blur-sm border-t border-white/20 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Gestión de Cobranzas <span className="text-blue-400">SAS</span>
-              </h3>
-              <p className="text-white/70 mb-6 leading-relaxed">
-                Líderes en soluciones de recaudación inteligente en Argentina. Transformamos la manera en que las empresas gestionan sus cobranzas.
-              </p>
-              
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-4 mb-6">
-                <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2">
-                  <Shield className="w-4 h-4 text-green-400" />
-                  <span className="text-white/80 text-sm">PCI DSS</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2">
-                  <CheckCircle className="w-4 h-4 text-blue-400" />
-                  <span className="text-white/80 text-sm">ISO 27001</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2">
-                  <Star className="w-4 h-4 text-yellow-400" />
-                  <span className="text-white/80 text-sm">4.9/5</span>
-                </div>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-3">
-
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-4 h-4 text-blue-400" />
-                  <Link href="mailto:info@gestiondecobranzas.com" className="text-white/80 hover:text-blue-400 transition-colors">
-                    info@gestiondecobranzas.com
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Servicios</h4>
-              <ul className="space-y-3 text-white/70">
-                <li><Link href="/servicios" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Gateway de Pagos
-                </Link></li>
-                <li><Link href="/servicios" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Transferencias Inteligentes
-                </Link></li>
-                <li><Link href="/servicios" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Automatización
-                </Link></li>
-                <li><Link href="/servicios" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Integración API
-                </Link></li>
-                <li><Link href="/servicios" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Consultoría
-                </Link></li>
-              </ul>
-            </div>
-
-
-
-            {/* Support & Legal */}
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Soporte</h4>
-              <ul className="space-y-3 text-white/70 mb-6">
-                <li><Link href="/contacto" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Contacto
-                </Link></li>
-                <li><Link href="/ayuda" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Centro de Ayuda
-                </Link></li>
-                <li><Link href="/documentacion" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Documentación
-                </Link></li>
-                <li><Link href="/status" className="hover:text-blue-400 transition-colors flex items-center group">
-                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Estado del Sistema
-                </Link></li>
-              </ul>
-              
-              <h5 className="text-white/80 font-medium mb-3">Legal</h5>
-              <ul className="space-y-2 text-white/60 text-sm">
-                <li><Link href="/privacidad" className="hover:text-blue-400 transition-colors">Privacidad</Link></li>
-                <li><Link href="/terminos" className="hover:text-blue-400 transition-colors">Términos</Link></li>
-                <li><Link href="/cookies" className="hover:text-blue-400 transition-colors">Cookies</Link></li>
-              </ul>
-            </div>
-          </div>
-
-
-
-          {/* Bottom Bar */}
-          <div className="border-t border-white/20 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-              <div className="text-white/60 text-sm">
-                © {new Date().getFullYear()} Gestión de Cobranzas SAS. Todos los derechos reservados.
-              </div>
-              <div className="flex items-center space-x-6 text-white/60 text-sm">
-                <span>Hecho con ❤️ en Argentina</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span>Todos los sistemas operativos</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       </main>
     </div>
   );
