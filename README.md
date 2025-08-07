@@ -129,7 +129,6 @@ gestiondecobranzas/
 - **Nombre**: Mínimo 2 caracteres
 - **Email**: Formato de email válido
 - **Empresa**: Mínimo 2 caracteres
-- **Teléfono**: Mínimo 10 caracteres
 - **Mensaje**: Mínimo 10 caracteres
 - **Volumen mensual**: Campo requerido
 
@@ -210,6 +209,18 @@ Para implementar analytics, considera:
 2. Revisa la importación de `globals.css`
 3. Limpia la caché del navegador
 
+## 📝 Changelog
+
+### Versión 1.0.0 (Enero 2025)
+- ✅ **Eliminación completa de referencias telefónicas** del sitio web
+- ✅ **Footer unificado** añadido a todas las subpáginas (contacto, servicios, privacidad, términos)
+- ✅ **Navegación mejorada** en todas las páginas
+- ✅ **Formulario de contacto optimizado** sin campo de teléfono
+- ✅ **Copyright dinámico** que se actualiza automáticamente
+- ✅ **Build de producción optimizado** sin errores de compilación
+- ✅ **Estructura de páginas completa** con todas las secciones legales
+- ✅ **Responsive design** mejorado para todos los dispositivos
+
 ## 🤝 Contribución
 
 Para contribuir al proyecto:
@@ -227,7 +238,6 @@ Este proyecto está bajo la licencia MIT. Ver `LICENSE` para más detalles.
 
 Para soporte técnico:
 - **Email**: soporte@gestioncobranzas.com
-- **Teléfono**: +54 11 1234-5678
 - **Documentación**: [Enlace a docs]
 
 ---
