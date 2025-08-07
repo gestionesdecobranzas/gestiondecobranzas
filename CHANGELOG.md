@@ -2,6 +2,16 @@
 
 Todos los cambios notables en este proyecto serán documentados en este archivo.
 
+## [1.2.1] - 2024-12-19
+
+### 🐛 Corregido
+- **Error de Compilación**: Corregido `createTransporter` a `createTransport` en nodemailer
+- **Imports No Utilizados**: Eliminada importación innecesaria de `Mail` de lucide-react
+
+### ✅ Verificado
+- **Build Exitoso**: Compilación sin errores ni warnings de TypeScript
+- **Servidor de Desarrollo**: Funcionamiento correcto en `http://localhost:3000`
+
 ## [1.2.0] - 2024-12-19
 
 ### 🎨 Mejoras de UI/UX

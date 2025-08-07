@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const validatedData = contactSchema.parse(body);
     
     // Configurar el transportador de email para Google Workspace
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false, // true para puerto 465, false para otros puertos

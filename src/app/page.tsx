@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, CreditCard, Zap, Shield, TrendingUp, Users, Clock, Menu, X, Star, Mail } from 'lucide-react';
+import { ArrowRight, CheckCircle, CreditCard, Zap, Shield, TrendingUp, Users, Clock, Menu, X, Star } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
@@ -704,7 +704,7 @@ export default function Home() {
             <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30">
               <h3 className="text-2xl font-bold text-white mb-4">¿Listo para transformar tus cobranzas?</h3>
               <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-                Unite a más de 1000 empresas que ya optimizaron sus procesos de cobro
+                Únete a más de 1000 empresas que ya optimizaron sus procesos de cobro
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contacto">
@@ -1295,7 +1295,7 @@ export default function Home() {
               ¿Listo para <span className="text-blue-400">revolucionar</span> tus cobranzas?
             </h2>
             <p className="text-xl text-white/80 mb-8">
-              Unite a más de 1000 empresas que ya confían en nosotros
+              Únete a más de 1000 empresas que ya confían en nosotros
             </p>
             <div className="flex justify-center">
               <Link href="/contacto">
