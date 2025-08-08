@@ -70,9 +70,9 @@ export default function ContactForm({ onClose }: ContactFormProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto"
+      className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg max-w-2xl mx-auto"
     >
-      <h2 className="text-3xl font-bold text-white mb-6 text-center">
+      <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         Solicitar Consulta Gratuita
       </h2>
       
@@ -80,10 +80,10 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 mb-6 flex items-center gap-3"
+          className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center gap-3"
         >
-          <CheckCircle className="w-5 h-5 text-green-400" />
-          <span className="text-green-100">
+          <CheckCircle className="w-5 h-5 text-green-600" />
+          <span className="text-green-800">
             ¡Mensaje enviado exitosamente! Nos contactaremos contigo pronto.
           </span>
         </motion.div>
@@ -93,10 +93,10 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6 flex items-center gap-3"
+          className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center gap-3"
         >
-          <AlertCircle className="w-5 h-5 text-red-400" />
-          <span className="text-red-100">
+          <AlertCircle className="w-5 h-5 text-red-600" />
+          <span className="text-red-800">
             Error al enviar el mensaje. Por favor, intenta nuevamente.
           </span>
         </motion.div>
@@ -105,13 +105,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-white/80 text-sm font-medium mb-2">
+            <label className="block text-gray-700 text-sm font-medium mb-2">
               Nombre Completo *
             </label>
             <input
               {...register('name')}
               type="text"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Tu nombre completo"
             />
             {errors.name && (
@@ -120,13 +120,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
           </div>
 
           <div>
-            <label className="block text-white/80 text-sm font-medium mb-2">
+            <label className="block text-gray-700 text-sm font-medium mb-2">
               Email *
             </label>
             <input
               {...register('email')}
               type="email"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="tu@email.com"
             />
             {errors.email && (
@@ -137,13 +137,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-white/80 text-sm font-medium mb-2">
+            <label className="block text-gray-700 text-sm font-medium mb-2">
               Empresa *
             </label>
             <input
               {...register('company')}
               type="text"
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Nombre de tu empresa"
             />
             {errors.company && (
@@ -155,19 +155,19 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         </div>
 
         <div>
-          <label className="block text-white/80 text-sm font-medium mb-2">
+          <label className="block text-gray-700 text-sm font-medium mb-2">
             Volumen Mensual de Transacciones *
           </label>
           <select
             {...register('monthlyVolume')}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
-            <option value="" className="bg-slate-800">Selecciona un rango</option>
-            <option value="0-1000" className="bg-slate-800">0 - 1,000 transacciones</option>
-            <option value="1000-5000" className="bg-slate-800">1,000 - 5,000 transacciones</option>
-            <option value="5000-10000" className="bg-slate-800">5,000 - 10,000 transacciones</option>
-            <option value="10000-50000" className="bg-slate-800">10,000 - 50,000 transacciones</option>
-            <option value="50000+" className="bg-slate-800">Más de 50,000 transacciones</option>
+            <option value="" className="bg-white">Selecciona un rango</option>
+            <option value="0-1000" className="bg-white">0 - 1,000 transacciones</option>
+            <option value="1000-5000" className="bg-white">1,000 - 5,000 transacciones</option>
+            <option value="5000-10000" className="bg-white">5,000 - 10,000 transacciones</option>
+            <option value="10000-50000" className="bg-white">10,000 - 50,000 transacciones</option>
+            <option value="50000+" className="bg-white">Más de 50,000 transacciones</option>
           </select>
           {errors.monthlyVolume && (
             <p className="text-red-400 text-sm mt-1">{errors.monthlyVolume.message}</p>
@@ -175,13 +175,13 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         </div>
 
         <div>
-          <label className="block text-white/80 text-sm font-medium mb-2">
+          <label className="block text-gray-700 text-sm font-medium mb-2">
             Mensaje *
           </label>
           <textarea
             {...register('message')}
             rows={4}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
             placeholder="Cuéntanos sobre tu negocio y cómo podemos ayudarte..."
           />
           {errors.message && (
@@ -207,7 +207,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
             <button
               type="button"
               onClick={onClose}
-              className="px-8 py-4 border-2 border-white/30 text-white rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+              className="px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-all duration-300"
             >
               Cancelar
             </button>
