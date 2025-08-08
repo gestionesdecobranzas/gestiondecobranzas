@@ -1,9 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, CreditCard, Smartphone, Globe, Shield, Zap, BarChart3, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowLeft, CreditCard, Smartphone, Globe, Shield, Zap, BarChart3, Users, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
+import LogoSVG from '@/images/Logo Gestion de cobranzas SAS  -color.png';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -21,27 +24,111 @@ const staggerContainer = {
 };
 
 export default function ServicesPage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="bg-slate-900/50 backdrop-blur-sm border-b border-slate-700/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
-              <ArrowLeft className="h-5 w-5" />
-              <span className="font-semibold">Volver al inicio</span>
-            </Link>
-            <div className="text-xl font-bold text-white">
-              Gestión de Cobranzas SAS
-            </div>
-            <Link href="/contacto" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
-              Contacto
-            </Link>
+      <nav className={`fixed top-2.5 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-2xl ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md border border-gray-200/50' : 'bg-white/20 backdrop-blur-md border border-gray-300/20'
+      }`}>
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center"
+            >
+              <Link href="/" className="hover:opacity-80 transition-opacity">
+                <Image 
+                  src={LogoSVG}
+                  alt="Gestión de Cobranzas SAS"
+                  width={180}
+                  height={55}
+                  className="h-12 w-auto"
+                />
+              </Link>
+            </motion.div>
+            
+            {/* Desktop Navigation */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="hidden md:flex items-center space-x-8"
+            >
+              <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
+              <a href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</a>
+              <a href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</a>
+
+              <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+                Contacto
+              </Link>
+            </motion.div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Abrir menú de navegación"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-gray-200 py-4"
+            >
+              <div className="flex flex-col space-y-4">
+                <Link 
+                  href="/servicios" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Servicios
+                </Link>
+                <a 
+                  href="/#ventajas" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Ventajas
+                </a>
+                <a 
+                  href="/#casos-uso" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Casos de Uso
+                </a>
+
+                <Link 
+                  href="/contacto" 
+                  className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contacto
+                </Link>
+              </div>
+            </motion.div>
+          )}
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-24">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +136,10 @@ export default function ServicesPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Nuestros <span className="text-blue-400">Servicios</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Nuestros <span className="text-blue-600">Servicios</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Soluciones completas de gestión de pagos diseñadas para impulsar tu negocio
           </p>
         </motion.div>
@@ -121,24 +208,24 @@ export default function ServicesPage() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              className="bg-gradient-to-br from-slate-800/50 to-blue-900/30 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/30 transition-all duration-300"
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-blue-600 p-3 rounded-lg text-white">
                   {service.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">{service.title}</h3>
-                  <span className="text-blue-400 font-semibold">{service.highlight}</span>
+                  <h3 className="text-2xl font-bold text-gray-900">{service.title}</h3>
+                  <span className="text-blue-600 font-semibold">{service.highlight}</span>
                 </div>
               </div>
               
-              <p className="text-white/80 mb-6">{service.description}</p>
+              <p className="text-gray-600 mb-6">{service.description}</p>
               
               <ul className="space-y-3">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-white/70">
-                    <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                  <li key={idx} className="flex items-center gap-3 text-gray-600">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -154,8 +241,8 @@ export default function ServicesPage() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
-            Servicios <span className="text-blue-400">Adicionales</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+            Servicios <span className="text-blue-600">Adicionales</span>
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -182,13 +269,13 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 text-center"
+                className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center"
               >
                 <div className="bg-blue-600 p-3 rounded-lg w-fit mx-auto mb-4 text-white">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                <p className="text-white/70">{service.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -199,32 +286,32 @@ export default function ServicesPage() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30 mb-20"
+          className="bg-gray-50 rounded-2xl p-8 border border-gray-200 mb-20"
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Precios <span className="text-blue-400">Transparentes</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Precios <span className="text-blue-600">Transparentes</span>
             </h2>
-            <p className="text-white/80 text-lg">
+            <p className="text-gray-600 text-lg">
               Sin costos ocultos, sin setup, solo pagas por lo que usas
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white/10 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Tarjetas de Crédito</h3>
-              <p className="text-3xl font-bold text-blue-400 mb-2">2.9%</p>
-              <p className="text-white/70">+ $15 por transacción</p>
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Tarjetas de Crédito</h3>
+              <p className="text-3xl font-bold text-blue-600 mb-2">2.9%</p>
+              <p className="text-gray-600">+ $15 por transacción</p>
             </div>
-            <div className="bg-white/10 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Transferencias</h3>
-              <p className="text-3xl font-bold text-blue-400 mb-2">0.5%</p>
-              <p className="text-white/70">Mínimo $50 por transacción</p>
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Transferencias</h3>
+              <p className="text-3xl font-bold text-blue-600 mb-2">0.5%</p>
+              <p className="text-gray-600">Mínimo $50 por transacción</p>
             </div>
-            <div className="bg-white/10 rounded-xl p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Débito Automático</h3>
-              <p className="text-3xl font-bold text-blue-400 mb-2">1.5%</p>
-              <p className="text-white/70">+ $25 por transacción</p>
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Débito Automático</h3>
+              <p className="text-3xl font-bold text-blue-600 mb-2">1.5%</p>
+              <p className="text-gray-600">+ $25 por transacción</p>
             </div>
           </div>
         </motion.div>
@@ -236,10 +323,10 @@ export default function ServicesPage() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            ¿Listo para <span className="text-blue-400">comenzar</span>?
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            ¿Listo para <span className="text-blue-600">comenzar</span>?
           </h2>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Implementa nuestra solución en menos de 48 horas y comienza a ahorrar en comisiones desde el primer día
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
