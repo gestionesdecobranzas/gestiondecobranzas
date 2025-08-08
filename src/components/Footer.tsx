@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { ArrowRight, Shield, CheckCircle, Star, Mail } from 'lucide-react';
+import Image from 'next/image';
+import LogoBlanco from '@/images/Logo Gestion de cobranzas SAS -blanco.svg';
 
 /**
  * Componente Footer unificado para todas las páginas del sitio
@@ -15,9 +17,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Gestión de Cobranzas <span className="text-blue-400">SAS</span>
-            </h3>
+            <div className="mb-4">
+              <Image 
+                src={LogoBlanco}
+                alt="Gestión de Cobranzas SAS"
+                width={200}
+                height={60}
+                className="h-12 w-auto"
+              />
+            </div>
             <p className="text-white/70 mb-6 leading-relaxed">
               Líderes en soluciones de recaudación inteligente en Argentina. Transformamos la manera en que las empresas gestionan sus cobranzas.
             </p>
@@ -103,18 +111,7 @@ export default function Footer() {
                 <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
                 Contacto
               </Link></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors flex items-center group">
-                <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                Centro de Ayuda
-              </a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors flex items-center group">
-                <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                Documentación
-              </a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors flex items-center group">
-                <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                Estado del Sistema
-              </a></li>
+
             </ul>
           </div>
         </div>
