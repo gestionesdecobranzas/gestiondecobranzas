@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, CreditCard, Smartphone, Globe, Shield, Zap, BarChart3, Users, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
+import { CreditCard, Smartphone, Globe, Shield, Zap, BarChart3, Users, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
@@ -66,8 +66,8 @@ export default function ServicesPage() {
               className="hidden md:flex items-center space-x-8"
             >
               <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
-              <a href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</a>
-              <a href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</a>
+              <Link href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</Link>
+              <Link href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</Link>
 
               <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Contacto
@@ -100,20 +100,20 @@ export default function ServicesPage() {
                 >
                   Servicios
                 </Link>
-                <a 
+                <Link 
                   href="/#ventajas" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Ventajas
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/#casos-uso" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Casos de Uso
-                </a>
+                </Link>
 
                 <Link 
                   href="/contacto" 

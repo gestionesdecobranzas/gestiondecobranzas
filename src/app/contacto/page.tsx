@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Clock, ArrowLeft, CheckCircle, Star, Users, Shield, Zap, Menu, X } from 'lucide-react';
+import { Mail, MapPin, Clock, CheckCircle, Star, Users, Shield, Zap, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import ContactForm from '@/components/ContactForm';
@@ -57,8 +57,8 @@ export default function ContactPage() {
               className="hidden md:flex items-center space-x-8"
             >
               <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
-              <a href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</a>
-              <a href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</a>
+              <Link href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</Link>
+              <Link href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</Link>
 
               <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Contacto
@@ -91,20 +91,20 @@ export default function ContactPage() {
                 >
                   Servicios
                 </Link>
-                <a 
+                <Link 
                   href="/#ventajas" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Ventajas
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href="/#casos-uso" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Casos de Uso
-                </a>
+                </Link>
 
                 <Link 
                   href="/contacto" 

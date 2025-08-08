@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, CreditCard, Zap, Shield, TrendingUp, Users, Clock, Menu, X, Star } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import LogoSVG from '@/images/Logo Gestion de cobranzas SAS  -color.png';
@@ -29,7 +29,7 @@ export default function Home() {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const words = ['Cobranzas', 'Servicios', 'Transferencias'];
+  const words = useMemo(() => ['Cobranzas', 'Servicios', 'Transferencias'], []);
 
   useEffect(() => {
     const handleScroll = () => {
