@@ -24,22 +24,15 @@ const staggerContainer = {
 
 export default function Contacto() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    empresa: '',
     telefono: '',
+    empresa: '',
     mensaje: ''
   });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -49,138 +42,150 @@ export default function Contacto() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario
-    console.log('Formulario enviado:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          empresa: '',
+          mensaje: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  useEffect(() => {
+    if (submitStatus !== 'idle') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation */}
-      <nav className={`fixed top-2.5 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-2xl ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md border border-gray-200/50' : 'bg-white/20 backdrop-blur-md border border-gray-300/20'
-      }`}>
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center"
-            >
-              <Link href="/" className="hover:opacity-80 transition-opacity">
-                <Image 
-                  src={LogoSVG}
-                  alt="Gestión de Cobranzas SAS"
-                  width={180}
-                  height={55}
-                  className="h-12 w-auto"
-                />
-              </Link>
-            </motion.div>
+      <nav className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center space-x-2">
+              <Image
+                src={LogoSVG}
+                alt="Gestión de Cobranzas SAS"
+                width={40}
+                height={40}
+                className="w-10 h-10"
+              />
+              <span className="text-xl font-bold text-slate-800">Gestión de Cobranzas</span>
+            </Link>
             
-            {/* Desktop Navigation */}
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="hidden md:flex items-center space-x-8"
-            >
-              <Link href="/" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Inicio</Link>
-              <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
-              <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-slate-600 hover:text-blue-600 transition-colors">
+                Inicio
+              </Link>
+              <Link href="/servicios" className="text-slate-600 hover:text-blue-600 transition-colors">
+                Servicios
+              </Link>
+              <Link href="/contacto" className="text-blue-600 font-medium">
                 Contacto
               </Link>
-            </motion.div>
+            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label="Abrir menú de navegación"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-slate-600 hover:text-blue-600 transition-colors"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-gray-200 py-4"
-            >
-              <div className="flex flex-col space-y-4">
-                <Link 
-                  href="/" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Inicio
-                </Link>
-                <Link 
-                  href="/servicios" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Servicios
-                </Link>
-                <Link 
-                  href="/contacto" 
-                  className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Contacto
-                </Link>
-              </div>
-            </motion.div>
-          )}
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden bg-white border-t border-slate-200"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link
+                href="/"
+                className="block px-3 py-2 text-slate-600 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Inicio
+              </Link>
+              <Link
+                href="/servicios"
+                className="block px-3 py-2 text-slate-600 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Servicios
+              </Link>
+              <Link
+                href="/contacto"
+                className="block px-3 py-2 text-blue-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contacto
+              </Link>
+            </div>
+          </motion.div>
+        )}
       </nav>
 
-      {/* Hero Section */}
       <main>
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              animate="animate"
-              className="text-center mb-16"
+        {/* Hero Section */}
+        <section className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-slate-600/10"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
-              <motion.div 
-                variants={fadeInUp}
-                className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30 mb-6"
-              >
-                <MessageCircle className="h-4 w-4" />
-                <span>Estamos aquí para ayudarte</span>
-              </motion.div>
+              <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6">
+                Contáctanos
+              </h1>
+              <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+                Estamos aquí para ayudarte a recuperar tu cartera vencida de manera eficiente y profesional
+              </p>
               
-              <motion.h1 
-                variants={fadeInUp}
-                className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
-              >
-                Hablemos de tu
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                  Proyecto
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                variants={fadeInUp}
-                className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto"
-              >
-                Nuestro equipo de expertos está listo para ayudarte a revolucionar tus cobranzas.
-                <strong className="text-gray-900"> Respuesta garantizada en menos de 24 horas.</strong>
-              </motion.p>
-
-              {/* Trust Indicators */}
-              <motion.div 
-                variants={fadeInUp}
+              {/* Contact Benefits */}
+              <div 
                 className="flex flex-wrap justify-center gap-4 mb-8"
               >
                 <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
-                  ✅ Respuesta < 24h
+                  ✅ Respuesta &lt; 24h
                 </span>
                 <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
                   🔒 Consulta gratuita
@@ -188,284 +193,304 @@ export default function Contacto() {
                 <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
                   👥 Soporte especializado
                 </span>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Contact Information */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-            >
-              <motion.div 
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
+        {/* Contact Section */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Contact Information */}
+              <motion.div
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="space-y-8"
               >
-                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
-                  <Mail className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Email</h3>
-                <p className="text-gray-600 mb-4">Escríbenos directamente</p>
-                <a 
-                  href="mailto:contacto@gestiondecobranzas.com" 
-                  className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
-                >
-                  contacto@gestiondecobranzas.com
-                </a>
+                <motion.div variants={fadeInUp}>
+                  <h2 className="text-3xl font-bold text-slate-800 mb-6">
+                    Información de Contacto
+                  </h2>
+                  <p className="text-slate-600 mb-8">
+                    Nuestro equipo de expertos está listo para ayudarte a optimizar tu gestión de cobranzas.
+                  </p>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Phone className="w-6 h-6 text-blue-600" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-800">Teléfono</h3>
+                      <p className="text-slate-600">+57 (1) 234-5678</p>
+                      <p className="text-sm text-slate-500">Lunes a Viernes, 8:00 AM - 6:00 PM</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Mail className="w-6 h-6 text-blue-600" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-800">Email</h3>
+                      <p className="text-slate-600">contacto@gestioncobranzas.com</p>
+                      <p className="text-sm text-slate-500">Respuesta en menos de 24 horas</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Clock className="w-6 h-6 text-blue-600" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-800">Horarios de Atención</h3>
+                      <p className="text-slate-600">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                      <p className="text-slate-600">Sábados: 9:00 AM - 1:00 PM</p>
+                      <p className="text-sm text-slate-500">Zona horaria de Colombia (COT)</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* WhatsApp Contact */}
+                <motion.div variants={fadeInUp}>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <MessageCircle className="w-6 h-6 text-green-600" />
+                      <h3 className="text-lg font-semibold text-green-800">WhatsApp Business</h3>
+                    </div>
+                    <p className="text-green-700 mb-4">
+                      ¿Necesitas una respuesta rápida? Contáctanos por WhatsApp
+                    </p>
+                    <a
+                      href="https://wa.me/573001234567?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20gestión%20de%20cobranzas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Chatear en WhatsApp
+                    </a>
+                  </div>
+                </motion.div>
               </motion.div>
 
-              <motion.div 
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
+              {/* Contact Form */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="bg-white rounded-2xl shadow-xl p-8"
               >
-                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
-                  <Phone className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Teléfono</h3>
-                <p className="text-gray-600 mb-4">Llámanos directamente</p>
-                <a 
-                  href="tel:+5491123456789" 
-                  className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
-                >
-                  +54 9 11 2345-6789
-                </a>
-              </motion.div>
-
-              <motion.div 
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
-              >
-                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
-                  <Clock className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Horarios</h3>
-                <p className="text-gray-600 mb-2">Lunes a Viernes</p>
-                <p className="text-blue-600 font-semibold">9:00 - 18:00 ART</p>
-                <p className="text-gray-500 text-sm mt-2">Soporte 24/7 disponible</p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Contact Form */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <motion.h2 
-                variants={fadeInUp}
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              >
-                Cuéntanos sobre
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                  tu Proyecto
-                </span>
-              </motion.h2>
-              
-              <motion.p 
-                variants={fadeInUp}
-                className="text-xl text-gray-600 max-w-2xl mx-auto"
-              >
-                Completa el formulario y nuestro equipo se pondrá en contacto contigo para una consulta personalizada
-              </motion.p>
-            </motion.div>
-
-            <motion.form 
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              onSubmit={handleSubmit}
-              className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Nombre Completo *
-                  </label>
-                  <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Tu nombre completo"
-                  />
-                </div>
+                <h2 className="text-3xl font-bold text-slate-800 mb-6">
+                  Envíanos un Mensaje
+                </h2>
                 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                    placeholder="tu@email.com"
-                  />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="nombre" className="block text-sm font-medium text-slate-700 mb-2">
+                        Nombre Completo *
+                      </label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        value={formData.nombre}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        placeholder="Tu nombre completo"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        placeholder="tu@email.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="telefono" className="block text-sm font-medium text-slate-700 mb-2">
+                        Teléfono
+                      </label>
+                      <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        value={formData.telefono}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        placeholder="+57 300 123 4567"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="empresa" className="block text-sm font-medium text-slate-700 mb-2">
+                        Empresa
+                      </label>
+                      <input
+                        type="text"
+                        id="empresa"
+                        name="empresa"
+                        value={formData.empresa}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        placeholder="Nombre de tu empresa"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="mensaje" className="block text-sm font-medium text-slate-700 mb-2">
+                      Mensaje *
+                    </label>
+                    <textarea
+                      id="mensaje"
+                      name="mensaje"
+                      value={formData.mensaje}
+                      onChange={handleInputChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                      placeholder="Cuéntanos sobre tu situación y cómo podemos ayudarte..."
+                    ></textarea>
+                  </div>
+
+                  {/* Submit Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <p className="text-green-800 font-medium">¡Mensaje enviado exitosamente!</p>
+                      <p className="text-green-600 text-sm">Te contactaremos pronto.</p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <p className="text-red-800 font-medium">Error al enviar el mensaje</p>
+                      <p className="text-red-600 text-sm">Por favor, inténtalo de nuevo o contáctanos directamente.</p>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" />
+                        Enviar Mensaje
+                      </>
+                    )}
+                  </button>
+                </form>
+
+                <div className="mt-6 pt-6 border-t border-slate-200">
+                  <p className="text-sm text-slate-500 text-center">
+                    Al enviar este formulario, aceptas nuestros{' '}
+                    <Link href="/terminos" className="text-blue-600 hover:underline">
+                      términos de servicio
+                    </Link>{' '}
+                    y{' '}
+                    <Link href="/privacidad" className="text-blue-600 hover:underline">
+                      política de privacidad
+                    </Link>
+                    .
+                  </p>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="empresa" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    id="empresa"
-                    name="empresa"
-                    value={formData.empresa}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Nombre de tu empresa"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="telefono" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                    placeholder="+54 9 11 1234-5678"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Mensaje *
-                </label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  value={formData.mensaje}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Cuéntanos sobre tu proyecto, volumen de transacciones, necesidades específicas..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-              >
-                Enviar Mensaje
-                <Send className="w-5 h-5" />
-              </button>
-
-              <p className="text-gray-500 text-sm text-center mt-4">
-                Al enviar este formulario, aceptas que nos pongamos en contacto contigo para brindarte información sobre nuestros servicios.
-              </p>
-            </motion.form>
+              </motion.div>
+            </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
-          <div className="max-w-4xl mx-auto">
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
               className="text-center mb-12"
             >
-              <motion.h2 
-                variants={fadeInUp}
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              >
-                Preguntas
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                  Frecuentes
-                </span>
-              </motion.h2>
-              
-              <motion.p 
-                variants={fadeInUp}
-                className="text-xl text-gray-600 max-w-2xl mx-auto"
-              >
+              <h2 className="text-3xl font-bold text-slate-800 mb-4">
+                Preguntas Frecuentes
+              </h2>
+              <p className="text-slate-600">
                 Resolvemos las dudas más comunes sobre nuestros servicios
-              </motion.p>
+              </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               className="space-y-6"
             >
-              {[
-                {
-                  question: "¿Cuánto tiempo toma la implementación?",
-                  answer: "La implementación completa toma menos de 48 horas. Nuestro equipo técnico se encarga de toda la configuración y te acompañamos durante el proceso de integración."
-                },
-                {
-                  question: "¿Qué comisiones cobran por las transacciones?",
-                  answer: "Nuestras comisiones son hasta 10 veces más bajas que las tarjetas de crédito tradicionales. El costo exacto depende del volumen de transacciones y el tipo de negocio. Contactanos para una cotización personalizada."
-                },
-                {
-                  question: "¿Es seguro el sistema de transferencias?",
-                  answer: "Absolutamente. Contamos con certificación PCI DSS Level 1, la más alta en seguridad de pagos. Todas las transacciones están encriptadas de extremo a extremo y cumplimos con las normativas bancarias más estrictas."
-                },
-                {
-                  question: "¿Qué soporte técnico ofrecen?",
-                  answer: "Ofrecemos soporte técnico 24/7 con un equipo especializado. Además, cada cliente tiene asignado un account manager para resolver cualquier consulta de manera personalizada."
-                },
-                {
-                  question: "¿Puedo integrar el sistema con mi plataforma actual?",
-                  answer: "Sí, nuestro sistema se integra fácilmente con la mayoría de plataformas de e-commerce, CRM y sistemas de facturación. Contamos con APIs REST y webhooks para una integración fluida."
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+              <motion.div variants={fadeInUp} className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-slate-800 mb-3">
+                  ¿Cuánto tiempo toma ver resultados?
+                </h3>
+                <p className="text-slate-600">
+                  Generalmente comenzamos a ver resultados en las primeras 2-4 semanas, dependiendo del tipo de cartera y la antigüedad de las deudas.
+                </p>
+              </motion.div>
 
-            <motion.div 
-              variants={fadeInUp}
-              className="text-center mt-12"
-            >
-              <p className="text-gray-600 mb-4">¿No encontraste la respuesta que buscabas?</p>
-              <a 
-                href="mailto:contacto@gestiondecobranzas.com"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-blue-900 transition-all duration-300"
-              >
-                <Mail className="w-4 h-4" />
-                Contáctanos directamente
-              </a>
+              <motion.div variants={fadeInUp} className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-slate-800 mb-3">
+                  ¿Cómo se calculan sus honorarios?
+                </h3>
+                <p className="text-slate-600">
+                  Trabajamos con un modelo de éxito compartido: solo cobramos un porcentaje de lo que efectivamente recuperamos para usted.
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-slate-800 mb-3">
+                  ¿Qué información necesitan para empezar?
+                </h3>
+                <p className="text-slate-600">
+                  Necesitamos la base de datos de deudores, montos adeudados, fechas de vencimiento y cualquier documentación de respaldo de las deudas.
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="bg-white rounded-lg p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-slate-800 mb-3">
+                  ¿Manejan todo tipo de deudas?
+                </h3>
+                <p className="text-slate-600">
+                  Sí, manejamos deudas comerciales, de servicios, financieras, y de todo tipo de sectores económicos, adaptando nuestras estrategias a cada caso.
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </section>
