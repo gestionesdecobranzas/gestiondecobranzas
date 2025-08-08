@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     template: "%s | Gestión de Cobranzas SAS"
   },
   description: "🚀 Plataforma líder en Argentina para gestión de cobranzas y gateway de pagos. Transferencias automáticas hasta 10x más económicas que tarjetas. ✅ Sin contracargos ✅ Acreditación inmediata ✅ Soporte 24/7",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   keywords: [
     "gestión cobranzas argentina",
     "gateway pagos", 
