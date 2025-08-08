@@ -36,7 +36,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Navigation */}
       <nav className={`fixed top-2.5 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-2xl ${
         isScrolled ? 'bg-white/95 backdrop-blur-md border border-gray-200/50' : 'bg-white/20 backdrop-blur-md border border-gray-300/20'
@@ -65,10 +65,8 @@ export default function ServicesPage() {
               animate={{ opacity: 1, x: 0 }}
               className="hidden md:flex items-center space-x-8"
             >
+              <Link href="/" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Inicio</Link>
               <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
-              <a href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</a>
-              <a href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</a>
-
               <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Contacto
               </Link>
@@ -94,27 +92,19 @@ export default function ServicesPage() {
             >
               <div className="flex flex-col space-y-4">
                 <Link 
+                  href="/" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Inicio
+                </Link>
+                <Link 
                   href="/servicios" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Servicios
                 </Link>
-                <a 
-                  href="/#ventajas" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Ventajas
-                </a>
-                <a 
-                  href="/#casos-uso" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Casos de Uso
-                </a>
-
                 <Link 
                   href="/contacto" 
                   className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
