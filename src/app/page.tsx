@@ -635,11 +635,11 @@ export default function Home() {
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>0% riesgo de contracargos</span>
                 </div>
-                <div className="flex items-center gap-3 text-white/60">
+                <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Pagos irreversibles</span>
                 </div>
-                <div className="flex items-center gap-3 text-white/60">
+                <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                   <span>Protección total</span>
                 </div>
