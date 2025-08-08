@@ -1,17 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Clock, ArrowLeft, CheckCircle, Star, Users, Shield, Zap, Menu, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Menu, X, MessageCircle, Users, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import LogoSVG from '@/images/Logo Gestion de cobranzas SAS  -color.png';
 
-export default function ContactPage() {
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+export default function Contacto() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    empresa: '',
+    telefono: '',
+    mensaje: ''
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,17 +41,26 @@ export default function ContactPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Skip to main content for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
-        Saltar al contenido principal
-      </a>
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aquí iría la lógica para enviar el formulario
+    console.log('Formulario enviado:', formData);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
       {/* Navigation */}
       <nav className={`fixed top-2.5 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl z-50 transition-all duration-300 rounded-2xl ${
         isScrolled ? 'bg-white/95 backdrop-blur-md border border-gray-200/50' : 'bg-white/20 backdrop-blur-md border border-gray-300/20'
-      }`} role="navigation" aria-label="Navegación principal">
+      }`}>
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <motion.div 
@@ -56,10 +85,8 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               className="hidden md:flex items-center space-x-8"
             >
+              <Link href="/" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Inicio</Link>
               <Link href="/servicios" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Servicios</Link>
-              <a href="/#ventajas" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Ventajas</a>
-              <a href="/#casos-uso" className="text-gray-700 hover:text-gray-900 transition-colors font-medium">Casos de Uso</a>
-
               <Link href="/contacto" className="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white px-6 py-2 rounded-full transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
                 Contacto
               </Link>
@@ -85,27 +112,19 @@ export default function ContactPage() {
             >
               <div className="flex flex-col space-y-4">
                 <Link 
+                  href="/" 
+                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Inicio
+                </Link>
+                <Link 
                   href="/servicios" 
                   className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Servicios
                 </Link>
-                <a 
-                  href="/#ventajas" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Ventajas
-                </a>
-                <a 
-                  href="/#casos-uso" 
-                  className="text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Casos de Uso
-                </a>
-
                 <Link 
                   href="/contacto" 
                   className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-300"
@@ -119,175 +138,337 @@ export default function ContactPage() {
         </div>
       </nav>
 
-      {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pt-24">
-        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-blue-600 transition-colors">Inicio</Link>
-          <span>/</span>
-          <span className="text-gray-900 font-medium">Contacto</span>
-        </nav>
-      </div>
-
-      <main id="main-content" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center bg-gray-100 border border-gray-300 rounded-full px-4 py-2 mb-6">
-            <Star className="h-4 w-4 text-yellow-500 mr-2" />
-            <span className="text-gray-700 text-sm font-medium">Consulta gratuita • Respuesta en 2 horas</span>
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Hablemos de tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">próximo éxito</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            ¿Listo para revolucionar tu sistema de pagos? Nuestro equipo de expertos está aquí para ayudarte a crecer.
-          </p>
-          
-          {/* Trust indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600">
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="h-4 w-4 text-green-500" />
-              <span>Implementación en 48hs</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4 text-blue-600" />
-              <span>PCI DSS Certificado</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-4 w-4 text-purple-600" />
-              <span>+1000 empresas confían</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Zap className="h-4 w-4 text-yellow-500" />
-              <span>Soporte 24/7</span>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
-          >
-            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Información de Contacto</h2>
+      {/* Hero Section */}
+      <main>
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              animate="animate"
+              className="text-center mb-16"
+            >
+              <motion.div 
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30 mb-6"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>Estamos aquí para ayudarte</span>
+              </motion.div>
               
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
-                    <Mail className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">adm@gestiondecobranzas.com</p>
-                  </div>
+              <motion.h1 
+                variants={fadeInUp}
+                className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+              >
+                Hablemos de tu
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                  Proyecto
+                </span>
+              </motion.h1>
+              
+              <motion.p 
+                variants={fadeInUp}
+                className="text-xl md:text-2xl text-gray-700 mb-8 max-w-3xl mx-auto"
+              >
+                Nuestro equipo de expertos está listo para ayudarte a revolucionar tus cobranzas.
+                <strong className="text-gray-900"> Respuesta garantizada en menos de 24 horas.</strong>
+              </motion.p>
+
+              {/* Trust Indicators */}
+              <motion.div 
+                variants={fadeInUp}
+                className="flex flex-wrap justify-center gap-4 mb-8"
+              >
+                <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
+                  ✅ Respuesta < 24h
+                </span>
+                <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
+                  🔒 Consulta gratuita
+                </span>
+                <span className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300">
+                  👥 Soporte especializado
+                </span>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Contact Information */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
+          <div className="max-w-7xl mx-auto">
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+            >
+              <motion.div 
+                variants={fadeInUp}
+                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
+              >
+                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
+                  <Mail className="w-8 h-8" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Email</h3>
+                <p className="text-gray-600 mb-4">Escríbenos directamente</p>
+                <a 
+                  href="mailto:contacto@gestiondecobranzas.com" 
+                  className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                >
+                  contacto@gestiondecobranzas.com
+                </a>
+              </motion.div>
 
-
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
-                    <MapPin className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Oficina</h3>
-                    <p className="text-gray-600">Av. Corrientes 1234, Piso 10</p>
-                    <p className="text-gray-600">Ciudad Autónoma de Buenos Aires</p>
-                    <p className="text-gray-600">Argentina (C1043AAZ)</p>
-                  </div>
+              <motion.div 
+                variants={fadeInUp}
+                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
+              >
+                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
+                  <Phone className="w-8 h-8" />
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Teléfono</h3>
+                <p className="text-gray-600 mb-4">Llámanos directamente</p>
+                <a 
+                  href="tel:+5491123456789" 
+                  className="text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                >
+                  +54 9 11 2345-6789
+                </a>
+              </motion.div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
-                    <Clock className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Horarios de Atención</h3>
-                    <p className="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
-                    <p className="text-gray-600">Sábados: 9:00 - 13:00</p>
-                    <p className="text-gray-600">Soporte 24/7 disponible</p>
-                  </div>
+              <motion.div 
+                variants={fadeInUp}
+                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg text-center group"
+              >
+                <div className="bg-blue-600 p-4 rounded-xl w-fit mx-auto mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
+                  <Clock className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Horarios</h3>
+                <p className="text-gray-600 mb-2">Lunes a Viernes</p>
+                <p className="text-blue-600 font-semibold">9:00 - 18:00 ART</p>
+                <p className="text-gray-500 text-sm mt-2">Soporte 24/7 disponible</p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Contact Form */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              >
+                Cuéntanos sobre
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                  tu Proyecto
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                variants={fadeInUp}
+                className="text-xl text-gray-600 max-w-2xl mx-auto"
+              >
+                Completa el formulario y nuestro equipo se pondrá en contacto contigo para una consulta personalizada
+              </motion.p>
+            </motion.div>
+
+            <motion.form 
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Nombre Completo *
+                  </label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="Tu nombre completo"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="tu@email.com"
+                  />
                 </div>
               </div>
-            </div>
 
-            {/* Benefits */}
-            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">¿Por qué elegirnos?</h3>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>Implementación en menos de 48 horas</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>Soporte técnico 24/7</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>Comisiones hasta 10x más bajas</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>API REST moderna y documentada</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>Dashboard en tiempo real</span>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="empresa" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Empresa
+                  </label>
+                  <input
+                    type="text"
+                    id="empresa"
+                    name="empresa"
+                    value={formData.empresa}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="Nombre de tu empresa"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="telefono" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    placeholder="+54 9 11 1234-5678"
+                  />
+                </div>
+              </div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <ContactForm />
-          </motion.div>
-        </div>
+              <div className="mb-6">
+                <label htmlFor="mensaje" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Mensaje *
+                </label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  value={formData.mensaje}
+                  onChange={handleInputChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                  placeholder="Cuéntanos sobre tu proyecto, volumen de transacciones, necesidades específicas..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              >
+                Enviar Mensaje
+                <Send className="w-5 h-5" />
+              </button>
+
+              <p className="text-gray-500 text-sm text-center mt-4">
+                Al enviar este formulario, aceptas que nos pongamos en contacto contigo para brindarte información sobre nuestros servicios.
+              </p>
+            </motion.form>
+          </div>
+        </section>
 
         {/* FAQ Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-20"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Preguntas Frecuentes</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">¿Cuánto tiempo toma la implementación?</h3>
-              <p className="text-gray-600">La implementación básica toma entre 24-48 horas. Para integraciones complejas, nuestro equipo técnico trabajará contigo para completar el proceso en menos de una semana.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">¿Qué métodos de pago soportan?</h3>
-              <p className="text-gray-600">Soportamos todos los métodos populares en Argentina: tarjetas de crédito/débito, transferencias bancarias, Mercado Pago, Rapipago, Pago Fácil, y más.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">¿Hay costos de setup?</h3>
-              <p className="text-gray-600">No cobramos costos de setup ni mantenimiento. Solo pagas por las transacciones procesadas, con tarifas transparentes y competitivas.</p>
-            </div>
-            
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">¿Ofrecen soporte técnico?</h3>
-              <p className="text-gray-600">Sí, ofrecemos soporte técnico 24/7 a través de múltiples canales: email, teléfono, chat en vivo, y un portal de soporte dedicado.</p>
-            </div>
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
+          <div className="max-w-4xl mx-auto">
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              >
+                Preguntas
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                  Frecuentes
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                variants={fadeInUp}
+                className="text-xl text-gray-600 max-w-2xl mx-auto"
+              >
+                Resolvemos las dudas más comunes sobre nuestros servicios
+              </motion.p>
+            </motion.div>
+
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {[
+                {
+                  question: "¿Cuánto tiempo toma la implementación?",
+                  answer: "La implementación completa toma menos de 48 horas. Nuestro equipo técnico se encarga de toda la configuración y te acompañamos durante el proceso de integración."
+                },
+                {
+                  question: "¿Qué comisiones cobran por las transacciones?",
+                  answer: "Nuestras comisiones son hasta 10 veces más bajas que las tarjetas de crédito tradicionales. El costo exacto depende del volumen de transacciones y el tipo de negocio. Contactanos para una cotización personalizada."
+                },
+                {
+                  question: "¿Es seguro el sistema de transferencias?",
+                  answer: "Absolutamente. Contamos con certificación PCI DSS Level 1, la más alta en seguridad de pagos. Todas las transacciones están encriptadas de extremo a extremo y cumplimos con las normativas bancarias más estrictas."
+                },
+                {
+                  question: "¿Qué soporte técnico ofrecen?",
+                  answer: "Ofrecemos soporte técnico 24/7 con un equipo especializado. Además, cada cliente tiene asignado un account manager para resolver cualquier consulta de manera personalizada."
+                },
+                {
+                  question: "¿Puedo integrar el sistema con mi plataforma actual?",
+                  answer: "Sí, nuestro sistema se integra fácilmente con la mayoría de plataformas de e-commerce, CRM y sistemas de facturación. Contamos con APIs REST y webhooks para una integración fluida."
+                }
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
+                  <p className="text-gray-600">{faq.answer}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="text-center mt-12"
+            >
+              <p className="text-gray-600 mb-4">¿No encontraste la respuesta que buscabas?</p>
+              <a 
+                href="mailto:contacto@gestiondecobranzas.com"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-blue-900 transition-all duration-300"
+              >
+                <Mail className="w-4 h-4" />
+                Contáctanos directamente
+              </a>
+            </motion.div>
           </div>
-        </motion.div>
+        </section>
       </main>
 
       <Footer />
