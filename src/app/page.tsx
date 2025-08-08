@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, CreditCard, Zap, Shield, TrendingUp, Users, Clock, Menu, X, Star } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import LogoSVG from '@/images/Logo Gestion de cobranzas SAS  -color.png';
@@ -29,7 +29,7 @@ export default function Home() {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const words = ['Cobranzas', 'Servicios', 'Transferencias'];
+  const words = useMemo(() => ['Cobranzas', 'Servicios', 'Transferencias'], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -397,63 +397,133 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </Link>
+              <Link href="/contacto">
+                <button className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300">
+                  Solicitar demo
+                </button>
+              </Link>
             </motion.div>
           </motion.div>
-
+          
           <motion.div 
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {[
-              {
-                icon: <CreditCard className="w-8 h-8" />,
-                title: "Gateway de Pagos",
-                description: "Acepta todos los métodos de pago con las comisiones más bajas del mercado.",
-                features: ["Tarjetas de crédito/débito", "Transferencias bancarias", "Billeteras digitales", "Pagos en efectivo"]
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "Máxima Seguridad",
-                description: "Protección completa con certificación PCI DSS y detección de fraude.",
-                features: ["Certificación PCI DSS", "Tokenización", "3D Secure", "Detección de fraude"]
-              },
-              {
-                icon: <Zap className="w-8 h-8" />,
-                title: "Procesamiento Instantáneo",
-                description: "Confirmación y acreditación inmediata de todas las transacciones.",
-                features: ["Tiempo real", "24/7 disponible", "API REST", "Webhooks"]
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg group"
-              >
-                <div className="bg-blue-600 p-4 rounded-xl w-fit mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                
-                <ul className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group hover:scale-105 shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Automatización Total</h3>
+              <p className="text-gray-600 mb-6">
+                Genera órdenes de pago automáticas. Tus clientes reciben instrucciones precisas 
+                para transferir directamente a tu cuenta.
+              </p>
+              <ul className="space-y-3 text-gray-500">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Generación automática de CBU/CVU</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Instrucciones de pago personalizadas</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Seguimiento en tiempo real</span>
+                </li>
+              </ul>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <Link href="/servicios#automatizacion">
+                  <button className="text-gray-700 hover:text-blue-600 font-semibold flex items-center gap-2 group">
+                    Conocer más
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group hover:scale-105 shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <CreditCard className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Gateway Inteligente</h3>
+              <p className="text-gray-600 mb-6">
+                Integra múltiples métodos de pago en una sola plataforma. 
+                Optimiza automáticamente las rutas de pago para maximizar conversiones.
+              </p>
+              <ul className="space-y-3 text-gray-500">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>API REST completa</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Webhooks en tiempo real</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Dashboard analítico</span>
+                </li>
+              </ul>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <Link href="/servicios#gateway">
+                  <button className="text-gray-700 hover:text-blue-600 font-semibold flex items-center gap-2 group">
+                    Conocer más
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group hover:scale-105 shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Máxima Seguridad</h3>
+              <p className="text-gray-600 mb-6">
+                Cumplimiento PCI DSS Level 1. Encriptación de extremo a extremo. 
+                Monitoreo 24/7 con detección de fraude en tiempo real.
+              </p>
+              <ul className="space-y-3 text-gray-500">
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Certificación PCI DSS</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Tokenización avanzada</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span>Detección de fraude IA</span>
+                </li>
+              </ul>
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <Link href="/servicios#seguridad">
+                  <button className="text-gray-700 hover:text-blue-600 font-semibold flex items-center gap-2 group">
+                    Conocer más
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Advantages Section */}
+      {/* Benefits Section */}
       <section id="ventajas" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -463,13 +533,21 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <motion.div 
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300 mb-6"
+            >
+              <TrendingUp className="h-4 w-4" />
+              <span>Ventajas competitivas</span>
+            </motion.div>
+            
             <motion.h2 
               variants={fadeInUp}
               className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
             >
               ¿Por qué elegir
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                nuestro sistema?
+                Transferencias?
               </span>
             </motion.h2>
             
@@ -477,7 +555,8 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
-              Revoluciona tu negocio con la tecnología de pagos más avanzada y económica del mercado
+              Descubre las ventajas que hacen de las transferencias bancarias 
+              la mejor opción para tu negocio en Argentina.
             </motion.p>
           </motion.div>
 
@@ -488,63 +567,179 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {[
-              {
-                icon: <TrendingUp className="w-8 h-8" />,
-                title: "10x Más Económico",
-                description: "Reduce tus costos de transacción hasta 10 veces comparado con tarjetas de crédito tradicionales.",
-                highlight: "Ahorra hasta 90%"
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "Sin Contracargos",
-                description: "Las transferencias bancarias eliminan completamente el riesgo de contracargos y disputas.",
-                highlight: "0% de riesgo"
-              },
-              {
-                icon: <Zap className="w-8 h-8" />,
-                title: "Acreditación Inmediata",
-                description: "Recibe el dinero al instante sin esperas ni demoras en la acreditación.",
-                highlight: "Tiempo real"
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: "Experiencia Superior",
-                description: "Interfaz intuitiva que mejora la conversión y satisfacción de tus clientes.",
-                highlight: "+40% conversión"
-              },
-              {
-                icon: <Clock className="w-8 h-8" />,
-                title: "Disponibilidad 24/7",
-                description: "Sistema operativo las 24 horas, los 7 días de la semana, sin interrupciones.",
-                highlight: "99.9% uptime"
-              },
-              {
-                icon: <CheckCircle className="w-8 h-8" />,
-                title: "Implementación Rápida",
-                description: "Integración completa en menos de 48 horas con nuestro equipo especializado.",
-                highlight: "< 48 horas"
-              }
-            ].map((advantage, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg group"
-              >
-                <div className="bg-blue-600 p-4 rounded-xl w-fit mb-6 text-white group-hover:bg-blue-700 transition-colors duration-300">
-                  {advantage.icon}
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Hasta 10x más económico</h3>
+              <p className="text-gray-600 mb-4">
+                Comisiones desde 0.5% vs 3-6% de tarjetas de crédito. 
+                Ahorra miles de pesos en comisiones mensuales.
+              </p>
+              <div className="bg-gray-100 rounded-lg p-4">
+                <div className="text-sm text-gray-500 mb-2">Ejemplo: Facturación $1M/mes</div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700">Tarjetas:</span>
+                  <span className="font-bold text-red-600">$50.000</span>
                 </div>
-                
-                <div className="flex items-center gap-3 mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">{advantage.title}</h3>
-                  <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-                    {advantage.highlight}
-                  </span>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-700">Transferencias:</span>
+                  <span className="font-bold text-green-600">$5.000</span>
                 </div>
-                
-                <p className="text-gray-600">{advantage.description}</p>
-              </motion.div>
-            ))}
+                <div className="border-t border-gray-300 mt-2 pt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="font-semibold text-gray-900">Ahorro:</span>
+                    <span className="font-bold text-blue-600">$45.000</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Acreditación inmediata</h3>
+              <p className="text-gray-600 mb-4">
+                El dinero llega a tu cuenta al instante, 24/7. 
+                Sin esperas, sin retenciones, sin sorpresas.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Transferencias inmediatas</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Disponible 24/7</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Sin retenciones</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Sin contracargos</h3>
+              <p className="text-gray-600 mb-4">
+                Las transferencias son irreversibles. Elimina el riesgo 
+                de contracargos y disputas fraudulentas.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Pagos irreversibles</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Sin disputas</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Protección total</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Mayor conversión</h3>
+              <p className="text-gray-600 mb-4">
+                Los argentinos prefieren transferencias. Aumenta tus ventas 
+                ofreciendo el método de pago más popular.
+              </p>
+              <div className="bg-gray-100 rounded-lg p-4">
+                <div className="text-sm text-gray-500 mb-2">Preferencias de pago en Argentina</div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700">Transferencias</span>
+                    <span className="font-bold text-blue-600">68%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700">Tarjetas</span>
+                    <span className="font-bold text-gray-600">24%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-700">Otros</span>
+                    <span className="font-bold text-gray-600">8%</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Clock className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Implementación rápida</h3>
+              <p className="text-gray-600 mb-4">
+                Integra nuestro sistema en minutos con nuestra API REST. 
+                Documentación completa y soporte técnico incluido.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">API REST simple</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">SDKs disponibles</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Soporte técnico 24/7</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Escalabilidad total</h3>
+              <p className="text-gray-600 mb-4">
+                Desde startups hasta grandes corporaciones. Nuestra infraestructura 
+                crece contigo sin límites de volumen.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Sin límites de volumen</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Infraestructura cloud</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700">Auto-escalado</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -559,13 +754,21 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <motion.div 
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium border border-gray-300 mb-6"
+            >
+              <Users className="h-4 w-4" />
+              <span>Casos de uso</span>
+            </motion.div>
+            
             <motion.h2 
               variants={fadeInUp}
               className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
             >
-              Casos de
+              Perfecto para
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                Uso Reales
+                tu industria
               </span>
             </motion.h2>
             
@@ -573,7 +776,8 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
-              Descubre cómo empresas de diferentes sectores están transformando sus cobranzas
+              Desde e-commerce hasta servicios profesionales, nuestro sistema 
+              se adapta a las necesidades específicas de cada sector.
             </motion.p>
           </motion.div>
 
@@ -582,91 +786,183 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {[
-              {
-                title: "E-commerce",
-                description: "Tiendas online que redujeron sus costos de transacción en un 85% y eliminaron completamente los contracargos.",
-                metrics: ["85% menos costos", "0 contracargos", "+30% conversión"],
-                icon: <CreditCard className="w-6 h-6" />
-              },
-              {
-                title: "Servicios Profesionales",
-                description: "Consultoras y agencias que automatizaron completamente sus procesos de facturación y cobranza.",
-                metrics: ["100% automatizado", "48h implementación", "+50% eficiencia"],
-                icon: <Users className="w-6 h-6" />
-              },
-              {
-                title: "Suscripciones",
-                description: "Plataformas SaaS que mejoraron su retención de clientes y redujeron la fricción en los pagos recurrentes.",
-                metrics: ["+95% retención", "Pagos automáticos", "0% fricción"],
-                icon: <Zap className="w-6 h-6" />
-              },
-              {
-                title: "Marketplace",
-                description: "Plataformas que conectan compradores y vendedores con split de pagos automático y liquidación instantánea.",
-                metrics: ["Split automático", "Liquidación inmediata", "Multi-vendor"],
-                icon: <TrendingUp className="w-6 h-6" />
-              }
-            ].map((useCase, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="bg-blue-600 p-3 rounded-lg text-white">
-                    {useCase.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">{useCase.title}</h3>
-                </div>
-                
-                <p className="text-gray-600 mb-6">{useCase.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {useCase.metrics.map((metric, idx) => (
-                    <span key={idx} className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-                      {metric}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <CreditCard className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">E-commerce</h3>
+              <p className="text-gray-600 mb-6">
+                Optimiza tus ventas online con transferencias automáticas. 
+                Reduce carritos abandonados y aumenta la conversión.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• Checkout optimizado</li>
+                <li>• Confirmación automática</li>
+                <li>• Integración con marketplaces</li>
+                <li>• Gestión de inventario</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Servicios Profesionales</h3>
+              <p className="text-gray-600 mb-6">
+                Cobra honorarios y servicios de forma profesional. 
+                Facturas automáticas y seguimiento de pagos.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• Facturación automática</li>
+                <li>• Recordatorios de pago</li>
+                <li>• Reportes detallados</li>
+                <li>• Integración contable</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">SaaS y Suscripciones</h3>
+              <p className="text-gray-600 mb-6">
+                Automatiza cobros recurrentes con máxima confiabilidad. 
+                Reduce la rotación y mejora el cash flow.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• Cobros recurrentes</li>
+                <li>• Gestión de suscripciones</li>
+                <li>• Dunning management</li>
+                <li>• Analytics avanzados</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Shield className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Fintech</h3>
+              <p className="text-gray-600 mb-6">
+                Potencia tu aplicación financiera con nuestro gateway. 
+                APIs robustas y compliance garantizado.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• APIs RESTful</li>
+                <li>• Webhooks en tiempo real</li>
+                <li>• Compliance PCI DSS</li>
+                <li>• Sandbox completo</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="w-8 h-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Marketplaces</h3>
+              <p className="text-gray-600 mb-6">
+                Facilita transacciones entre compradores y vendedores. 
+                Split payments y gestión de comisiones automática.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• Split payments</li>
+                <li>• Gestión de comisiones</li>
+                <li>• Escrow automático</li>
+                <li>• Multi-vendor support</li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 group shadow-sm"
+            >
+              <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Clock className="w-8 h-8 text-gray-700" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Educación</h3>
+              <p className="text-gray-600 mb-6">
+                Simplifica el pago de cursos y matrículas. 
+                Planes de pago flexibles y gestión estudiantil.
+              </p>
+              <ul className="space-y-2 text-gray-500 text-sm">
+                <li>• Planes de pago</li>
+                <li>• Gestión de matrículas</li>
+                <li>• Becas y descuentos</li>
+                <li>• Portal estudiantil</li>
+              </ul>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div 
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              ¿Listo para revolucionar tus cobranzas?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Únete a más de 1000 empresas que ya transformaron su negocio con nuestro sistema de pagos inteligente
-            </p>
+            <motion.h2 
+              variants={fadeInUp}
+              className="text-4xl md:text-6xl font-bold text-white mb-6"
+            >
+              ¿Listo para
+              <span className="block text-blue-200">
+                revolucionar
+              </span>
+              tus cobranzas?
+            </motion.h2>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.p 
+              variants={fadeInUp}
+              className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto"
+            >
+              Únete a más de 1000 empresas que ya transformaron sus cobranzas 
+              con nuestro sistema de transferencias inteligentes.
+            </motion.p>
+            
+            <motion.div 
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            >
               <Link href="/contacto">
-                <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 shadow-xl">
+                <button className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 shadow-xl hover:shadow-2xl hover:scale-105">
                   Comenzar Ahora
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
               
               <Link href="/servicios">
-                <button className="text-white border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
+                <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
                   Ver Servicios
                 </button>
               </Link>
-            </div>
+            </motion.div>
+            
+            <motion.div 
+              variants={fadeInUp}
+              className="mt-8 text-blue-200 text-sm"
+            >
+              <p>✅ Sin costos de setup • ✅ Integración en 24hs • ✅ Soporte 24/7</p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
