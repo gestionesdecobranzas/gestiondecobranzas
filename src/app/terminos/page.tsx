@@ -199,7 +199,7 @@ export default function TerminosPage() {
                 Para consultas sobre estos términos de servicio, puede contactarnos:
               </p>
               <ul className="space-y-2">
-                <li><strong>Email:</strong> adm@gestiondecobranzas.com</li>
+                <li><strong>Email:</strong> adm@gestionesdecobranzas.com</li>
                 <li><strong>Teléfono:</strong> +54 11 1234-5678</li>
                 <li><strong>Dirección:</strong> Buenos Aires, Argentina</li>
               </ul>

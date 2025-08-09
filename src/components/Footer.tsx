@@ -50,8 +50,8 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <Link href="mailto:adm@gestiondecobranzas.com" className="text-white/80 hover:text-blue-400 transition-colors">
-                  adm@gestiondecobranzas.com
+                <Link href="mailto:adm@gestionesdecobranzas.com" className="text-white/80 hover:text-blue-400 transition-colors">
+                  adm@gestionesdecobranzas.com
                 </Link>
               </div>
             </div>

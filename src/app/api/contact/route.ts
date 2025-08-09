@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false, // true para puerto 465, false para otros puertos
       auth: {
-        user: process.env.SMTP_USER || 'adm@gestiondecobranzas.com',
+        user: process.env.SMTP_USER || 'adm@gestionesdecobranzas.com',
         pass: process.env.SMTP_PASS || 'demo-password',
       },
       tls: {
@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
 
     // Email para el equipo de ventas
     const salesEmail = {
-      from: process.env.SMTP_FROM || 'noreply@gestiondecobranzas.com',
-      to: process.env.SALES_EMAIL || 'adm@gestiondecobranzas.com',
+      from: process.env.SMTP_FROM || 'noreply@gestionesdecobranzas.com',
+      to: process.env.SALES_EMAIL || 'adm@gestionesdecobranzas.com',
       subject: `Nueva solicitud de demo - ${validatedData.company}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -82,46 +82,46 @@ export async function POST(request: NextRequest) {
 
     // Email de confirmación para el cliente
     const confirmationEmail = {
-      from: process.env.SMTP_FROM || 'noreply@gestiondecobranzas.com',
+      from: process.env.SMTP_FROM || 'noreply@gestionesdecobranzas.com',
       to: validatedData.email,
       subject: 'Confirmación de solicitud - Gestión de Cobranzas SAS',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #1e293b 0%, #1e40af 100%); padding: 30px; text-align: center;">
-            <h1 style="color: white; margin: 0;">¡Gracias por tu interés!</h1>
+            <h1 style="color: white; margin: 0;">¡Gracias por su interés!</h1>
           </div>
           
           <div style="padding: 30px; background: #f8fafc;">
             <h2 style="color: #1e293b;">Hola ${validatedData.name},</h2>
             
             <p style="color: #475569; line-height: 1.6;">
-              Hemos recibido tu solicitud de demo para <strong>${validatedData.company}</strong>. 
-              Nuestro equipo de especialistas se pondrá en contacto contigo en las próximas 24 horas.
+              Hemos recibido su solicitud de demo para <strong>${validatedData.company}</strong>. 
+              Nuestro equipo de especialistas se contactará con vos en las próximas 24 horas.
             </p>
             
             <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
               <h3 style="color: #1e293b; margin-top: 0;">¿Qué sigue?</h3>
               <ul style="color: #475569; line-height: 1.6;">
-                <li>Un especialista revisará tu solicitud</li>
+                <li>Un especialista revisará su solicitud</li>
                 <li>Te contactaremos para agendar una demo personalizada</li>
                 <li>Te mostraremos cómo ahorrar hasta 10x en costos de transacción</li>
-                <li>Diseñaremos una solución específica para tu negocio</li>
+                <li>Diseñaremos una solución específica para su negocio</li>
               </ul>
             </div>
             
             <p style="color: #475569; line-height: 1.6;">
-              Mientras tanto, puedes conocer más sobre nuestras soluciones en nuestro sitio web.
+              Mientras tanto, podés conocer más sobre nuestras soluciones en nuestro sitio web.
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://gestiondecobranzas.com" style="background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">Visitar Sitio Web</a>
+              <a href="https://gestionesdecobranzas.com" style="background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold;">Visitar Sitio Web</a>
             </div>
           </div>
           
           <div style="background: #1e293b; padding: 20px; text-align: center;">
             <p style="color: #94a3b8; margin: 0; font-size: 14px;">
               © 2025 Gestión de Cobranzas SAS<br>
-              Buenos Aires, Argentina | adm@gestiondecobranzas.com
+              Buenos Aires, Argentina | adm@gestionesdecobranzas.com
             </p>
           </div>
         </div>

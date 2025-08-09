@@ -84,7 +84,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         >
           <CheckCircle className="w-5 h-5 text-green-600" />
           <span className="text-green-800">
-            ¡Mensaje enviado exitosamente! Nos contactaremos contigo pronto.
+            ¡Mensaje enviado exitosamente! Nos contactaremos en las próximas horas.
           </span>
         </motion.div>
       )}
@@ -97,7 +97,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
         >
           <AlertCircle className="w-5 h-5 text-red-600" />
           <span className="text-red-800">
-            Error al enviar el mensaje. Por favor, intenta nuevamente.
+            No se pudo enviar el mensaje. Por favor, intentá más tarde.
           </span>
         </motion.div>
       )}
@@ -182,7 +182,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
             {...register('message')}
             rows={4}
             className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-            placeholder="Cuéntanos sobre tu negocio y cómo podemos ayudarte..."
+            placeholder="Contanos sobre tu negocio y cómo podemos ayudarte..."
           />
           {errors.message && (
             <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>

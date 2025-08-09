@@ -145,7 +145,7 @@ export default function ContactPage() {
             Hablemos de tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">próximo éxito</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            ¿Listo para revolucionar tu sistema de pagos? Nuestro equipo de expertos está aquí para ayudarte a crecer.
+            ¿Listo para revolucionar tu sistema de cobranzas? Nuestro equipo de expertos está aquí para ayudarte a crecer.
           </p>
           
           {/* Trust indicators */}
@@ -187,23 +187,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">adm@gestiondecobranzas.com</p>
+                    <p className="text-gray-600">adm@gestionesdecobranzas.com</p>
                   </div>
                 </div>
 
 
-
-                <div className="flex items-start space-x-4">
-                  <div className="bg-blue-600 p-3 rounded-lg">
-                    <MapPin className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">Oficina</h3>
-                    <p className="text-gray-600">Av. Corrientes 1234, Piso 10</p>
-                    <p className="text-gray-600">Ciudad Autónoma de Buenos Aires</p>
-                    <p className="text-gray-600">Argentina (C1043AAZ)</p>
-                  </div>
-                </div>
 
                 <div className="flex items-start space-x-4">
                   <div className="bg-blue-600 p-3 rounded-lg">
@@ -241,7 +229,7 @@ export default function ContactPage() {
                 </li>
                 <li className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                  <span>Dashboard en tiempo real</span>
+                  <span>Reportes automáticos por API</span>
                 </li>
               </ul>
             </div>
@@ -269,7 +257,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">¿Cuánto tiempo toma la implementación?</h3>
-              <p className="text-gray-600">La implementación básica toma entre 24-48 horas. Para integraciones complejas, nuestro equipo técnico trabajará contigo para completar el proceso en menos de una semana.</p>
+              <p className="text-gray-600">La implementación básica toma entre 24-48 horas. Para integraciones complejas, nuestro equipo técnico trabajará con vos para completar el proceso en menos de una semana.</p>
             </div>
             
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">

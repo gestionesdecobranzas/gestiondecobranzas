@@ -140,7 +140,7 @@ export default function ServicesPage() {
             Nuestros <span className="text-blue-600">Servicios</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluciones completas de gestión de pagos diseñadas para impulsar tu negocio
+            Soluciones completas de gestión de cobranzas diseñadas para impulsar tu negocio
           </p>
         </motion.div>
 
@@ -250,7 +250,7 @@ export default function ServicesPage() {
               {
                 icon: <BarChart3 className="w-6 h-6" />,
                 title: "Analytics Avanzado",
-                description: "Dashboard en tiempo real con métricas detalladas, reportes personalizables y análisis predictivo."
+                description: "API de analytics en tiempo real con métricas detalladas, reportes personalizables y análisis predictivo."
               },
               {
                 icon: <Users className="w-6 h-6" />,

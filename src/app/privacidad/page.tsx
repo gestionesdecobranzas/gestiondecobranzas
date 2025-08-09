@@ -41,7 +41,7 @@ export default function PrivacyPage() {
             Política de <span className="text-blue-400">Privacidad</span>
           </h1>
           <p className="text-xl text-slate-300">
-            Tu privacidad es nuestra prioridad. Conoce cómo protegemos tus datos.
+            Tu privacidad es nuestra prioridad. Conocé cómo protegemos tus datos.
           </p>
           <p className="text-sm text-slate-400 mt-4">
             Última actualización: Enero 2025
@@ -62,8 +62,8 @@ export default function PrivacyPage() {
               Introducción
             </h2>
             <p className="text-white/80 leading-relaxed">
-              En Gestión de Cobranzas SAS, nos comprometemos a proteger y respetar tu privacidad. 
-              Esta política explica cómo recopilamos, usamos y protegemos tu información personal 
+              En Gestión de Cobranzas SAS, nos comprometemos a proteger y respetar tu privacidad.
+        Esta política explica cómo recopilamos, usamos y protegemos tu información personal 
               cuando utilizas nuestros servicios de gateway de pagos.
             </p>
           </div>
@@ -165,7 +165,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-white mb-4">Tus Derechos</h2>
             <div className="text-white/80 space-y-4">
               <p className="leading-relaxed">
-                Bajo la Ley de Protección de Datos Personales de Argentina (Ley 25.326) y el RGPD, tienes los siguientes derechos:
+                Bajo la Ley de Protección de Datos Personales de Argentina (Ley 25.326) y el RGPD, tenés los siguientes derechos:
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-white/5 rounded-lg p-4">
@@ -193,7 +193,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-white mb-4">Cookies y Tecnologías Similares</h2>
             <div className="text-white/80 space-y-4">
               <p className="leading-relaxed">
-                Utilizamos cookies y tecnologías similares para mejorar tu experiencia, 
+                Utilizamos cookies y tecnologías similares para mejorar su experiencia, 
                 analizar el uso del sitio y personalizar el contenido.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
@@ -218,13 +218,13 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-white mb-4">Contacto</h2>
             <div className="text-white/80 space-y-4">
               <p className="leading-relaxed">
-                Si tienes preguntas sobre esta política de privacidad o deseas ejercer tus derechos, 
-                puedes contactarnos:
+                Si tiene preguntas sobre esta política de privacidad o desea ejercer sus derechos,
+              podés contactarnos:
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold text-white mb-2">Datos de Protección</h3>
-                  <p className="text-sm mb-1">Email: adm@gestiondecobranzas.com</p>
+                  <p className="text-sm mb-1">Email: adm@gestionesdecobranzas.com</p>
                   <p className="text-sm mb-1">Teléfono: +54 11 1234-5678</p>
                   <p className="text-sm">Horario: Lunes a Viernes 9:00-18:00</p>
                 </div>
@@ -262,7 +262,7 @@ export default function PrivacyPage() {
         >
           <Link href="/contacto">
             <button className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-2xl">
-              ¿Tienes preguntas? Contáctanos
+              ¿Tenés preguntas? Contáctanos
             </button>
           </Link>
         </motion.div>

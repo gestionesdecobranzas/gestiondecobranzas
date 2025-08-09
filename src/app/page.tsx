@@ -383,7 +383,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
             >
-              Automatiza completamente tus cobranzas con nuestro sistema de transferencias bancarias.
+              Automatizá completamente tus cobranzas con nuestro sistema de transferencias bancarias.
               Sin intermediarios, sin comisiones altas, sin complicaciones.
             </motion.p>
 
@@ -421,8 +421,8 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Automatización Total</h3>
               <p className="text-gray-600 mb-6">
-                Genera órdenes de pago automáticas. Tus clientes reciben instrucciones precisas 
-                para transferir directamente a tu cuenta.
+                Generá órdenes de pago automáticas. Tus clientes reciben instrucciones precisas
+        para transferir directamente a tu cuenta.
               </p>
               <ul className="space-y-3 text-gray-500">
                 <li className="flex items-center gap-3">
@@ -457,8 +457,8 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Pagos Seguros</h3>
               <p className="text-gray-600 mb-6">
-                Máxima seguridad bancaria. Cada transferencia es directa entre tu cliente 
-                y tu cuenta, sin intermediarios.
+                Máxima seguridad bancaria. Cada transferencia es directa entre tu cliente
+        y tu cuenta, sin intermediarios.
               </p>
               <ul className="space-y-3 text-gray-500">
                 <li className="flex items-center gap-3">
@@ -493,7 +493,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Integración Completa</h3>
               <p className="text-gray-600 mb-6">
-                Conecta con tu sistema actual en minutos. API REST, webhooks 
+                Conectá con tu sistema actual en minutos. API REST, webhooks 
                 y documentación completa para desarrolladores.
               </p>
               <ul className="space-y-3 text-gray-500">
@@ -575,7 +575,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">10x Más Económico</h3>
               <p className="text-gray-600 mb-4">
-                Reduce tus costos de procesamiento hasta un 90% comparado con tarjetas de crédito y otros métodos.
+                Reducí tus costos de procesamiento hasta un 90% comparado con tarjetas de crédito y otros métodos.
               </p>
               <div className="bg-gray-100 rounded-lg p-4 border border-gray-200">
                 <div className="text-sm text-gray-700 font-semibold mb-2">Comparación de costos:</div>
@@ -614,7 +614,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>Dashboard en vivo</span>
+                  <span>Monitoreo por API</span>
                 </div>
               </div>
             </motion.div>
@@ -709,7 +709,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Experiencia Premium</h3>
               <p className="text-gray-600 mb-4">
-                Interfaz intuitiva tanto para ti como para tus clientes. Proceso de pago simple y efectivo.
+                Interfaz intuitiva tanto para vos como para tus clientes. Proceso de pago simple y efectivo.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-gray-500">
@@ -718,7 +718,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>Dashboard intuitivo</span>
+                  <span>Integración intuitiva</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
@@ -806,7 +806,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce</h3>
                 <p className="text-gray-600 mb-6">
-                  Optimiza las conversiones de tu tienda online con un checkout sin fricciones
+                  Optimizá las conversiones de tu tienda online con un checkout sin fricciones
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-gray-500">
@@ -844,7 +844,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Servicios Profesionales</h3>
                 <p className="text-gray-600 mb-6">
-                  Automatiza la facturación y cobro de tus servicios profesionales
+                  Automatizá la facturación y cobro de tus servicios profesionales
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-gray-500">
@@ -1235,7 +1235,7 @@ export default function Home() {
               },
               {
                 question: "¿Necesito cambiar mi sistema actual?",
-                answer: "No. Nuestra API se integra fácilmente con cualquier sistema existente. Mantienes tu flujo de trabajo actual con beneficios adicionales.",
+                answer: "No. Nuestra API se integra fácilmente con cualquier sistema existente. Mantenés tu flujo de trabajo actual con beneficios adicionales.",
                 category: "Integración",
                 icon: Zap
               },
