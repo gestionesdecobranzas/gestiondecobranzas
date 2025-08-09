@@ -707,22 +707,22 @@ export default function Home() {
               <div className="bg-gray-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Star className="w-8 h-8 text-gray-700" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Experiencia Premium</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">API Inteligente</h3>
               <p className="text-gray-600 mb-4">
-                Interfaz intuitiva tanto para vos como para tus clientes. Proceso de pago simple y efectivo.
+                API REST moderna y completa para integrar pagos en tu sistema. Control total desde tu aplicación.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>UX optimizada</span>
+                  <span>Webhooks en tiempo real</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>Integración intuitiva</span>
+                  <span>Documentación completa</span>
                 </div>
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                  <span>Proceso simplificado</span>
+                  <span>SDKs para múltiples lenguajes</span>
                 </div>
               </div>
             </motion.div>
